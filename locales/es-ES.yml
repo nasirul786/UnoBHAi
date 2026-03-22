@@ -114,3 +114,7 @@ sudo_menu: "¡Bienvenido al menú de los sudoers!\n\nElija una opción a continu
   para configurar el bot."
 sudoers: "Usuarios con permisos de sudo:\n\n"
 won_first: '{name} ¡ganó el partido en primer lugar!'
+left_game_private: "¡Has abandonado la partida en {group}!"
+remove_reply_required: "¡Responde al mensaje de un jugador para eliminarlo de la partida!"
+player_removed: "¡{admin} ha eliminado a {name} de la partida!"
+player_not_in_game: "¡Este jugador no está en la partida!"

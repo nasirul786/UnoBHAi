@@ -111,3 +111,7 @@ choose_card: Choose a card to update
 skip_all: "{name} skipped all players!"
 discarted_all: "{name} discarded {count} cards!"
 dev_mode: \nDeveloper mode
+left_game_private: You left the game in {group}!
+remove_reply_required: Reply to a player's message to remove them from the game!
+player_removed: "{admin} removed {name} from the game!"
+player_not_in_game: This player is not in the game!

@@ -170,6 +170,52 @@ async def join_game(c: Client, m: Message | CallbackQuery, ut, ct):
 @use_lang()
 async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
     func = m.answer if isinstance(m, CallbackQuery) else m.reply_text
+
+    # Handle /leave in private chat: find the user's game from player_game
+    if isinstance(m, Message) and m.chat.type == ChatType.PRIVATE:
+        game: Game = player_game.get(m.from_user.id)
+        if not game or m.from_user.id not in game.players:
+            return await func(ut("no_game") if not game else ut("no_joinned"))
+
+        chat_id = game.chat.id
+        # Use the game's chat lang for chat-level messages
+        clang = (await Chat.get_or_create(id=chat_id))[0].lang
+        from functools import partial
+        from unu.locales import get_locale_string
+        gt = partial(get_locale_string, clang)
+
+        if game.is_started and game.next_player.id == m.from_user.id:
+            inline_keyb = InlineKeyboardMarkup([
+                [InlineKeyboardButton(gt("play"), switch_inline_query_current_chat="")]
+            ])
+            game.next()
+            await c.send_message(
+                chat_id,
+                gt("next").format(name=game.next_player.mention),
+                reply_markup=inline_keyb,
+            )
+        del game.players[m.from_user.id]
+        del player_game[m.from_user.id]
+
+        if len(game.players) < minimum_players:
+            for player in game.players:
+                player_game.pop(player)
+            games.pop(chat_id)
+            await c.send_message(
+                chat_id=chat_id,
+                text=gt("player_left").format(name=m.from_user.mention) + ", " + gt("game_over"),
+            )
+            game.stop()
+            await game.message.edit_text(gt("game_over"))
+            if (await Chat.get(id=chat_id)).auto_pin:
+                await game.message.unpin()
+            return await func(ut("left_game_private").format(group=game.chat.title))
+        await c.send_message(
+            chat_id=chat_id, text=gt("player_left").format(name=m.from_user.mention)
+        )
+        return await func(ut("left_game_private").format(group=game.chat.title))
+
+    # Original group/callback logic
     game: Game = games.get(m.chat.id if isinstance(m, Message) else m.message.chat.id)
     if not game or m.from_user.id not in game.players:
         return await func(ut("no_game") if not game else ut("no_joinned"))
@@ -207,6 +253,59 @@ async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
             chat_id=chat_id, text=ct("player_left").format(name=m.from_user.mention)
         )
     return await func(ut("left_game"))
+
+
+@Client.on_message(filters.command("remove") & ~filters.private)
+@use_lang()
+async def remove_player(c: Client, m: Message, ut, ct):
+    # Only works in groups, must reply to someone's message
+    if not m.reply_to_message or not m.reply_to_message.from_user:
+        return await m.reply_text(ut("remove_reply_required"))
+
+    # Check if the command sender is an admin
+    member = await c.get_chat_member(m.chat.id, m.from_user.id)
+    if member.status.value not in ("administrator", "creator"):
+        return await m.reply_text(ut("admin_only"))
+
+    target_user = m.reply_to_message.from_user
+    game: Game = games.get(m.chat.id)
+    if not game:
+        return await m.reply_text(ut("no_game"))
+    if target_user.id not in game.players:
+        return await m.reply_text(ut("player_not_in_game"))
+
+    # If it's the target's turn, advance to the next player first
+    if game.is_started and game.next_player.id == target_user.id:
+        inline_keyb = InlineKeyboardMarkup([
+            [InlineKeyboardButton(ct("play"), switch_inline_query_current_chat="")]
+        ])
+        game.next()
+        await c.send_message(
+            game.chat.id,
+            ct("next").format(name=game.next_player.mention),
+            reply_markup=inline_keyb,
+        )
+
+    del game.players[target_user.id]
+    player_game.pop(target_user.id, None)
+
+    if len(game.players) < minimum_players:
+        for player in game.players:
+            player_game.pop(player)
+        games.pop(m.chat.id)
+        await m.reply_text(
+            ct("player_removed").format(name=target_user.mention, admin=m.from_user.mention)
+            + ", " + ct("game_over")
+        )
+        game.stop()
+        await game.message.edit_text(ct("game_over"))
+        if (await Chat.get(id=m.chat.id)).auto_pin:
+            await game.message.unpin()
+        return None
+
+    return await m.reply_text(
+        ct("player_removed").format(name=target_user.mention, admin=m.from_user.mention)
+    )
 
 
 @Client.on_message(filters.command("close"))

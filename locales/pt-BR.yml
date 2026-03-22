@@ -113,3 +113,7 @@ game_ruinning: Não é possível alterar as configurações enquanto uma partida
 sudo_menu: "Bem-vindo ao menu de sudoers!\n\nEscolha uma opção abaixo para configurar
   o bot."
 won_first: '{name} ganhou a partida em primeiro lugar!'
+left_game_private: Você saiu da partida em {group}!
+remove_reply_required: Responda à mensagem de um jogador para removê-lo da partida!
+player_removed: "{admin} removeu {name} da partida!"
+player_not_in_game: Este jogador não está na partida!

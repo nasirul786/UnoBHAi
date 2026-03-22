@@ -1,0 +1,117 @@
+lang_name: Hinglish
+lang_flag: 🇮🇳
+lang_changed: Bhasha ko Hinglish me badla gaya.
+back: Wapas ja
+theme: Theme
+settings_text: Settings open kar
+info_theme: Tune cards ke liye ek theme select kiya
+seven_zero: 7-0
+info_seven: Jab koi 7 play karta hai, to wo apne cards kisi aur player ke saath swap kar sakta hai.Jab koi 0 play karta hai, to sab log apne cards next player ko pass karte hai.
+sbluff: Bluff
+info_bluff: Jab koi player +4 card play karta hai, to next wala usko challenge kar sakta hai. Agar jisne +4 card play kiya hai uske paas koi aur card hai jo wo play kar sakta tha, to usko 4 cards draw karne padenge. Agar nahi hai, to jisne challenge kiya hai usko 6 cards draw karne padenge.
+one_win: ek winner
+info_one_win: Jab pehle player ke saare cards khatam ho jaate hai, to game khatam ho jaata hai aur wo hi winner hota hai.
+one_card: UNO bol
+info_one_card: Jab kisi player ke paas sirf ek card bachta hai, to usko UNO bolna padta hai. Agar wo nahi bolta, to usko 2 cards draw karne padenge.
+auto_pin: Auto pin
+info_auto_pin: Jab game start hota hai, bot automatically game wala message pin kar dega.
+stack: Stack draw cards
+info_stack: Jab kisi player ko +2 ya +4 card milta hai, to wo apna ek aur +2 ya +4 card play kar sakta hai. Agle player ko total jitne cards bane hai utne draw karne padenge.
+draw_one: Draw one card
+info_draw_one: Jab player card nahi khel sakta, to usko ek card uthana padega aur turn pass karna hoga.
+language: Bhasha
+info_lang: Tu bot ka bhasha badal sakta hai.
+choose_lang: Ek bhasha select kar
+start_text: "Hello! mai UNO bot hu, Ek bot jo Telegram pe UNO khelne ke liye hai!\n\nKhelne ke liye, mujhe group me add kar aur /new bhej naya game start karne ke liye!\n\nYa phir config karne ke liye niche ke buttons daba!"
+help: Help
+game_mode: Game Mode
+status: Status
+game_mode_text: "Available game modes ki info dikha rha hu!\n\n"
+settings: "Settings menu me swagat hai!\n\nNiche se ek option choose kar aur bot set kar."
+theme_config: "cards ke liye ek theme select kar:"
+minimalist: Minimalist
+classic: Classic
+colorblind: Colorblind
+nomercy: No Mercy
+game_existis: Ek game already chalu hai!
+only_group: Ye game khali group me hi khela ja sakta hai!
+already_in_game: Tu already ek game ke andar hai
+already_joined: Tu already is game ke andar hai
+join: Join
+leave: Leave
+start_game: Start Game
+game_started: Naya game chalu ho chuka hai!
+no_game: Ab koi game nahi chal raha!
+no_game_text: Koi game nahi chal raha, /new bhej game khlen ke liye!
+lobby_closed: Lobby band kar diya gaya!
+lobby_opened: lobby khola gaya fir se!
+joined_game: Tu join kar liya game!
+player_joined: "{name} ne game join kiya!"
+no_joinned: Tu game ke andar nahi hai!
+next: Ab iski bari {name}
+game_over: Finally, game khatam hua!
+player_left: "{name} ne game chhod diya!"
+left_game: Tune game se nikal liya!
+not_allowed: Tu ye nahi kar sakta!
+game_already_started: game chalu hai already!
+info_text: "🃏 Game Information:\nCurrent player - {current_player}\nLast card - {last_card}\n"
+info_text2: "{player}: {cards} cards, "
+pass: Pass
+buy: Buy {number} card(s)
+bluff: Mujhe lagta hai tu bluffing kar raha hai!
+cards_swapped: "{name1} swapped cards with {name2}"
+not_swapped: Players ki ginti ke wajah se cards swap karna possible nahi tha!
+swapped: Cards swap kar liya gaya!
+bought: Tune {number} cards uthaya hai!
+pbought: "{name} ne {number} cards uthaya!"
+bluffed: "{name} ne bluffig nahi kar sakta!\n{name} ne {draw} cards uthaya!"
+not_bluffed: "{name1} ne bluffing nahi kiya!\n\n{name2} ko {draw} cards mile!"
+colorchoose: "{name} color select kar!"
+colorchoosed: Mai ye choose kar raha hu {color}!
+playerchoose: "{name} ek player select kar!"
+invalid_card: Invalid move!
+said_uno: "{name} ne UNO kaha!"
+say_uno: "{name} UNO bol ya 2 cards utha le!"
+not_said_uno: "{name} ne UNO nahi kaha!\n{name} ko 2 cards mile!"
+won: "{name} ne kar dikhaya, Congratulation!"
+won_first: "{name} ne sabse pehle game jeet liya!"
+continuing: Game abhi {count} players ke sath continue hoga
+play: Play
+admin_only: Group ka admins hi ye kar sakta hai!
+game_ruinning: Settings change karne ke liye pehle game khatam karna hoga!
+theme_changed: Game ka theme change kar diya gaya, new theme > {theme}!
+sudos: Change sudoers
+sudo_menu: "Welcome to the sudoers menu!\n\nNiche se ek option choose kar aur bot set kar."
+sudoers: "Users with sudo permissions:\n\n"
+add_sudo: Add user
+rm_sudo: Remove user
+send_user_id: Send the user ID or username you want to add to the sudoers
+user_not_found: User not found!
+user_sudoer: "{user} is already a sudoer!"
+user_added: "{user} has been added to the sudoers!"
+select_user: "Select a user to remove from the sudoers\n\n"
+user_not_sudoer: "{user} is not a sudoer!"
+user_removed: "{user} has been removed from the sudoers!"
+add_theme: Add new theme
+send_theme_name: Send the name of the new theme
+send_sticker: "Send a sticker to replace the sticker:"
+theme_added: The theme {name} has been added!
+add_card: Add new card
+update_card: Update card
+verify_card: Verify cards
+sudo_theme: What do you want to do with the theme {theme}?
+send_card_code: Send the code of the card you want to add
+send_colored_card: Send the colored sticker to {code} card
+send_gray_card: Send the gray sticker to {code} card
+card_added: The card {code} has been added!
+card_removed: The card {code} has been removed!
+light: Light
+dark: Dark
+choose_card: Choose a card to update
+skip_all: "{name} skipped all players!"
+discarted_all: "{name} discarded {count} cards!"
+dev_mode: \nDeveloper mode
+left_game_private: Tune {group} me chal rahe game se nikal liya!
+remove_reply_required: Kisi player ke message pe reply karke usse game se hatao!
+player_removed: "{admin} ne {name} ko game se nikal diya!"
+player_not_in_game: Ye player game ke andar nahi hai!

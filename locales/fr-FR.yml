@@ -115,3 +115,7 @@ light: Lumière
 dark: Sombre
 choose_card: Choisissez une carte à mettre à jour
 won_first: '{name} a remporté la partie, arrivant en première position!'
+left_game_private: Tu as quitté le jeu dans {group} !
+remove_reply_required: Répondez au message d'un joueur pour le retirer du jeu !
+player_removed: "{admin} a retiré {name} du jeu !"
+player_not_in_game: Ce joueur n'est pas dans le jeu !

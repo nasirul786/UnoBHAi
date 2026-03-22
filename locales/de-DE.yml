@@ -115,3 +115,7 @@ sudo_menu: "Willkommen im sudoers-Menü!\n\nWählen Sie unten eine Option, um de
   zu konfigurieren."
 auto_pin: Auto-Pin
 won_first: '{name} das Spiel auf dem ersten Platz gewonnen!'
+left_game_private: Du hast das Spiel in {group} verlassen!
+remove_reply_required: Antworten Sie auf die Nachricht eines Spielers, um ihn aus dem Spiel zu entfernen!
+player_removed: "{admin} hat {name} aus dem Spiel entfernt!"
+player_not_in_game: Dieser Spieler ist nicht im Spiel!

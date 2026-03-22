@@ -113,3 +113,7 @@ user_removed: '{user} foi removido dos sudoers!'
 send_user_id: Enviar o ID de utilizador ou o nome de utilizador que pretende adicionar
   aos sudoers
 won_first: '{name} ganhou a partida em primeiro lugar!'
+left_game_private: Deixaste a partida em {group}!
+remove_reply_required: Responde à mensagem de um jogador para removê-lo da partida!
+player_removed: "{admin} removeu {name} da partida!"
+player_not_in_game: Este jogador não está na partida!

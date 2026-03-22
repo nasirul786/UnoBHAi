@@ -109,3 +109,7 @@ minimalist: Minimumisto
 leave: Lasu min foriri
 start_game: Komencu ludon
 won_first: '{name} gajnis la ludon en unua loko!'
+left_game_private: Vi lasis la ludon en {group}!
+remove_reply_required: Respondu al la mesaĝo de ludanto por forigi ilin de la ludo!
+player_removed: "{admin} forigis {name} de la ludo!"
+player_not_in_game: Ĉi tiu ludanto ne estas en la ludo!

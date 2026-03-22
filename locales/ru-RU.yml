@@ -112,3 +112,7 @@ dark: Темный
 choose_card: Выберите карту для обновления
 settings_text: Настройки
 won_first: '{name} выиграл игру, заняв первое место!'
+left_game_private: Вы покинули игру в {group}!
+remove_reply_required: Ответьте на сообщение игрока, чтобы удалить его из игры!
+player_removed: "{admin} удалил {name} из игры!"
+player_not_in_game: Этот игрок не в игре!
