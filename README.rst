@@ -25,7 +25,7 @@ Features
 How to use
 ----------
 
-- Add the bot `@OnoBHAiBot <https://t.me/OnoBHAiBot>`_
+- Add the bot `@UnoBHAiBot <https://t.me/UnoBHAiBot>`_
 - Create a game room with the command ``/new``
 - Wait for other players to join the room via the button or the command ``/join``
 - Start the game with the command ``/start`` or via the button
