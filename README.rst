@@ -45,7 +45,7 @@ How to use
 
 How to run the bot locally
 --------------------------
-- Clone the repository using the command `git clone https://github.com/AmanoTeam/UnuRobot.git`
+- Clone the repository using the command `git clone https://github.com/nasirul786/UnoBHAi.git`
 - Create a virtual environment with the command `python -m venv venv`
 - Activate the virtual environment with the command `source venv/bin/activate`
 - Install the dependencies with the command `pip install .`
