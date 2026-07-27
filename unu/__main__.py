@@ -1,7 +1,8 @@
+import asyncio
 import os
 
 from hydrogram import idle
-from tortoise import run_async
+from tortoise import Tortoise
 
 from config import bot
 from unu.db import connect_database
@@ -10,7 +11,7 @@ from unu.version import ascii_art
 
 
 async def main():
-    os.system("clear")
+    os.system("cls" if os.name == "nt" else "clear")
     print(ascii_art)
     await connect_database()
     await bot.start()
@@ -20,6 +21,9 @@ async def main():
 
     await save_all()
     await bot.stop()
+    await Tortoise.close_connections()
 
 
-run_async(main())
+if __name__ == "__main__":
+    asyncio.run(main())
+

@@ -8,7 +8,7 @@ info_theme: You choose a theme for the cards
 seven_zero: 7-0
 info_seven: When a 7 is played, the player can swap cards with another player. When a 0 is played, everyone passes their cards to the next player.
 sbluff: Bluff
-info_bluff: When a player plays a +4 card, the next one can challenge. If the player who played the +4 card has another card to play, they draw 4 cards. If not, the one who challenged draws 6.
+info_bluff: "When +4 is played, next player can challenge. If +4 was illegal, the player draws 4 cards. If legal, the challenger draws 6 cards!"
 one_win: One winner
 info_one_win: When the first player runs out of cards, the game ends and they are the winner.
 one_card: Say UNO
@@ -115,3 +115,17 @@ left_game_private: You left the game in {group}!
 remove_reply_required: Reply to a player's message to remove them from the game!
 player_removed: "{admin} removed {name} from the game!"
 player_not_in_game: This player is not in the game!
+timeout_setting: Skip Timeout
+info_timeout: Choose the skip timeout duration for player turns.
+timeout_skipped: "Time's up! {name} was skipped and drew {count} card(s)!"
+timeout_changed: "Skip timeout set to {timeout} seconds!"
+choose_card_color: "Choose the color of the card you want to update:"
+choose_card_value: "Choose the value of the card you want to update:"
+send_sticker_to_replace: "Send a sticker to replace this card:"
+card_updated_success: "Card updated successfully!"
+checking_colored_cards: "Verifying colored cards..."
+checking_gray_cards: "Verifying gray cards..."
+cards_verified_success: "Cards verified successfully!"
+card_not_found_send_sticker: "Card {card} not found, send a sticker to replace it:"
+card_updated: "Card {card} updated successfully!"
+

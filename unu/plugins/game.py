@@ -24,6 +24,24 @@ from unu.locales import use_lang
 from unu.utils import filter_sudoers
 
 
+async def is_admin_or_creator(c: Client, chat_id: int, user_id: int, game: Game = None) -> bool:
+    if game and getattr(game, "creator_id", None) == user_id:
+        return True
+    user_db = await User.get_or_none(id=user_id)
+    if user_db and user_db.sudo:
+        return True
+    from config import sudoers
+    if user_id in sudoers:
+        return True
+    try:
+        member = await c.get_chat_member(chat_id, user_id)
+        if member.status.value in ("administrator", "creator", "owner"):
+            return True
+    except Exception:
+        pass
+    return False
+
+
 @Client.on_message(filters.command("new"))
 @Client.on_message(filters.command("new_dev") & filter_sudoers)
 @use_lang()
@@ -39,6 +57,7 @@ async def new_game(c: Client, m: Message, ut, ct):
         )
 
     game = Game(m.chat, (await Chat.get(id=m.chat.id)).theme)
+    game.creator_id = m.from_user.id
     if m.command[0] == "new_dev":
         game.is_dev = True
     game.players[m.from_user.id] = m.from_user
@@ -178,7 +197,6 @@ async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
             return await func(ut("no_game") if not game else ut("no_joinned"))
 
         chat_id = game.chat.id
-        # Use the game's chat lang for chat-level messages
         clang = (await Chat.get_or_create(id=chat_id))[0].lang
         from functools import partial
         from unu.locales import get_locale_string
@@ -197,18 +215,22 @@ async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
         del game.players[m.from_user.id]
         del player_game[m.from_user.id]
 
-        if len(game.players) < minimum_players:
-            for player in game.players:
-                player_game.pop(player)
-            games.pop(chat_id)
+        if m.from_user.id == game.creator_id and game.players:
+            game.creator_id = next(iter(game.players.keys()))
+
+        min_req = minimum_players if game.is_started else 1
+        if len(game.players) < min_req:
+            for player in list(game.players.keys()):
+                player_game.pop(player, None)
+            games.pop(chat_id, None)
             await c.send_message(
                 chat_id=chat_id,
                 text=gt("player_left").format(name=m.from_user.mention) + ", " + gt("game_over"),
             )
             game.stop()
-            await game.message.edit_text(gt("game_over"))
-            if (await Chat.get(id=chat_id)).auto_pin:
-                await game.message.unpin()
+            if game.message:
+                await game.message.edit_text(gt("game_over"))
+            await game.unpin_message()
             return await func(ut("left_game_private").format(group=game.chat.title))
         await c.send_message(
             chat_id=chat_id, text=gt("player_left").format(name=m.from_user.mention)
@@ -216,7 +238,8 @@ async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
         return await func(ut("left_game_private").format(group=game.chat.title))
 
     # Original group/callback logic
-    game: Game = games.get(m.chat.id if isinstance(m, Message) else m.message.chat.id)
+    chat_id = m.chat.id if isinstance(m, Message) else m.message.chat.id
+    game: Game = games.get(chat_id)
     if not game or m.from_user.id not in game.players:
         return await func(ut("no_game") if not game else ut("no_joinned"))
 
@@ -232,21 +255,29 @@ async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
         )
     del game.players[m.from_user.id]
     del player_game[m.from_user.id]
-    chat_id = m.chat.id if isinstance(m, Message) else m.message.chat.id
 
-    if len(game.players) < minimum_players:
-        for player in game.players:
-            player_game.pop(player)
-        games.pop(m.chat.id if isinstance(m, Message) else m.message.chat.id)
+    if m.from_user.id == game.creator_id and game.players:
+        game.creator_id = next(iter(game.players.keys()))
+
+    min_req = minimum_players if game.is_started else 1
+    if len(game.players) < min_req:
+        for player in list(game.players.keys()):
+            player_game.pop(player, None)
+        games.pop(chat_id, None)
         if isinstance(m, CallbackQuery):
             await c.send_message(
                 chat_id=chat_id,
                 text=ct("player_left").format(name=m.from_user.mention) + ", " + ct("game_over"),
             )
             game.stop()
-            await game.message.edit_text(ut("game_over"))
-            if (await Chat.get(id=chat_id)).auto_pin:
-                await game.message.unpin()
+            if game.message:
+                await game.message.edit_text(ut("game_over"))
+            await game.unpin_message()
+        else:
+            game.stop()
+            if game.message:
+                await game.message.edit_text(ut("game_over"))
+            await game.unpin_message()
         return await func(ut("game_over"))
     if isinstance(m, CallbackQuery):
         await c.send_message(
@@ -258,23 +289,20 @@ async def leave_game(c: Client, m: Message | CallbackQuery, ut, ct):
 @Client.on_message(filters.command("remove") & ~filters.private)
 @use_lang()
 async def remove_player(c: Client, m: Message, ut, ct):
-    # Only works in groups, must reply to someone's message
     if not m.reply_to_message or not m.reply_to_message.from_user:
         return await m.reply_text(ut("remove_reply_required"))
 
-    # Check if the command sender is an admin
-    member = await c.get_chat_member(m.chat.id, m.from_user.id)
-    if member.status.value not in ("administrator", "creator"):
-        return await m.reply_text(ut("admin_only"))
-
-    target_user = m.reply_to_message.from_user
     game: Game = games.get(m.chat.id)
     if not game:
         return await m.reply_text(ut("no_game"))
+
+    if not await is_admin_or_creator(c, m.chat.id, m.from_user.id, game):
+        return await m.reply_text(ut("not_allowed"))
+
+    target_user = m.reply_to_message.from_user
     if target_user.id not in game.players:
         return await m.reply_text(ut("player_not_in_game"))
 
-    # If it's the target's turn, advance to the next player first
     if game.is_started and game.next_player.id == target_user.id:
         inline_keyb = InlineKeyboardMarkup([
             [InlineKeyboardButton(ct("play"), switch_inline_query_current_chat="")]
@@ -289,18 +317,22 @@ async def remove_player(c: Client, m: Message, ut, ct):
     del game.players[target_user.id]
     player_game.pop(target_user.id, None)
 
-    if len(game.players) < minimum_players:
-        for player in game.players:
-            player_game.pop(player)
-        games.pop(m.chat.id)
+    if target_user.id == game.creator_id and game.players:
+        game.creator_id = next(iter(game.players.keys()))
+
+    min_req = minimum_players if game.is_started else 1
+    if len(game.players) < min_req:
+        for player in list(game.players.keys()):
+            player_game.pop(player, None)
+        games.pop(m.chat.id, None)
         await m.reply_text(
             ct("player_removed").format(name=target_user.mention, admin=m.from_user.mention)
             + ", " + ct("game_over")
         )
         game.stop()
-        await game.message.edit_text(ct("game_over"))
-        if (await Chat.get(id=m.chat.id)).auto_pin:
-            await game.message.unpin()
+        if game.message:
+            await game.message.edit_text(ct("game_over"))
+        await game.unpin_message()
         return None
 
     return await m.reply_text(
@@ -315,12 +347,18 @@ async def close_game(c: Client, m: Message | CallbackQuery, ut, ct):
     if isinstance(m, CallbackQuery):
         func = m.answer
         chat = m.message.chat
+        user_id = m.from_user.id
     else:
         func = m.reply_text
         chat = m.chat
+        user_id = m.from_user.id
+
     game = games.get(chat.id)
     if not game:
         return await func(ut("no_game") if not game else ut("not_allowed"))
+
+    if not await is_admin_or_creator(c, chat.id, user_id, game):
+        return await func(ut("not_allowed"))
 
     game.closed = True
     if isinstance(m, CallbackQuery):
@@ -334,16 +372,22 @@ async def close_game(c: Client, m: Message | CallbackQuery, ut, ct):
 @Client.on_message(filters.command("open"))
 @Client.on_callback_query(filters.regex("^open_game$"))
 @use_lang()
-async def open_game(c: Client, m: Message, ut, ct):
+async def open_game(c: Client, m: Message | CallbackQuery, ut, ct):
     if isinstance(m, CallbackQuery):
         func = m.answer
         chat = m.message.chat
+        user_id = m.from_user.id
     else:
         func = m.reply_text
         chat = m.chat
+        user_id = m.from_user.id
+
     game = games.get(chat.id)
     if not game:
         return await func(ut("no_game") if not game else ut("not_allowed"))
+
+    if not await is_admin_or_creator(c, chat.id, user_id, game):
+        return await func(ut("not_allowed"))
 
     game.closed = False
     if isinstance(m, CallbackQuery):
@@ -367,17 +411,20 @@ async def kill_game(c: Client, m: Message, ut, ct):
     if not game:
         return await m.reply_text(ut("no_game") if not game else ut("not_allowed"))
 
-    games.pop(m.chat.id)
-    for player in game.players:
-        player_game.pop(player)
+    if not await is_admin_or_creator(c, m.chat.id, m.from_user.id, game):
+        return await m.reply_text(ut("not_allowed"))
+
+    games.pop(m.chat.id, None)
+    for player in list(game.players.keys()):
+        player_game.pop(player, None)
     game.stop()
-    await game.message.edit_text(ct("game_over"))
-    if (await Chat.get(id=m.chat.id)).auto_pin:
-        await game.message.unpin()
+    if game.message:
+        await game.message.edit_text(ct("game_over"))
+    await game.unpin_message()
     return await m.reply_text(ct("game_over"))
 
 
-@Client.on_message(filters.command("start") & ~filters.private)
+@Client.on_message(filters.command(["start", "startgame"]) & ~filters.private)
 @Client.on_callback_query(filters.regex("^start_game$"))
 @use_lang()
 async def start_game(c: Client, m: Message | CallbackQuery, ut, ct):
@@ -396,6 +443,7 @@ async def start_game(c: Client, m: Message | CallbackQuery, ut, ct):
     if len(game.players) < minimum_players:
         return await func(ut("minimum_players").format(minimum_players))
 
+    game.timer_duration = getattr(config, "timeout", 45) or 45
     game.start()
     game.deck.shuffle()
     for player in game.players.values():
@@ -411,7 +459,10 @@ async def start_game(c: Client, m: Message | CallbackQuery, ut, ct):
         ],
     ])
     await c.send_message(chat_id=chat_id, text=ct("game_started"))
-    await game.message.edit_text(ct("game_started"), reply_markup=keyb)
+    try:
+        await game.message.edit_text(ct("game_started"), reply_markup=keyb)
+    except Exception:
+        pass
     pcard = next(
         (
             lcard
@@ -901,20 +952,20 @@ async def verify_cards(game: Game, c: Client, ir, user: User, ut, ct):
         if game.winner:
             game.winner = False
             if not game.is_dev:
-                db_user = await User.get_or_none(id=user.id)
-                if db_user and db_user.placar:
-                    db_user.wins += 1
-                    await db_user.save()
-        if (await Chat.get(id=game.chat.id)).one_win and len(game.players) > 2:
-            if not game.is_dev:
-                db_user = await User.get_or_none(id=user.id)
-                if db_user and db_user.placar:
-                    db_user.matches += 1
-                    db_user.cards += game.players[user.id].total_cards
-                    await db_user.save()
+                db_user = (await User.get_or_create(id=user.id))[0]
+                db_user.wins += 1
+                await db_user.save()
+        if not game.is_dev:
+            db_user = (await User.get_or_create(id=user.id))[0]
+            db_user.matches += 1
+            db_user.cards += game.players[user.id].total_cards
+            await db_user.save()
+
+        config = await Chat.get(id=game.chat.id)
+        if not config.one_win and len(game.players) > 2:
             game.next()
-            game.players.pop(user.id)
-            player_game.pop(user.id)
+            game.players.pop(user.id, None)
+            player_game.pop(user.id, None)
             await c.send_message(game.chat.id, ct("continuing").format(count=len(game.players)))
             await c.send_message(
                 game.chat.id,
@@ -922,19 +973,19 @@ async def verify_cards(game: Game, c: Client, ir, user: User, ut, ct):
                 reply_markup=inline_keyb,
             )
         else:
-            games.pop(game.chat.id)
-            for player in game.players:
-                db_user = await User.get_or_none(id=player)
-                if db_user and db_user.placar:
+            games.pop(game.chat.id, None)
+            for player in list(game.players.keys()):
+                if not game.is_dev and player != user.id:
+                    db_user = (await User.get_or_create(id=player))[0]
                     db_user.matches += 1
                     db_user.cards += game.players[player].total_cards
                     await db_user.save()
-                player_game.pop(player)
+                player_game.pop(player, None)
             await c.send_message(game.chat.id, ct("game_over"))
             game.stop()
-            await game.message.edit_text(ct("game_over"))
-            if (await Chat.get(id=game.chat.id)).auto_pin:
-                await game.message.unpin()
+            if game.message:
+                await game.message.edit_text(ct("game_over"))
+            await game.unpin_message()
         return True
     elif (await Chat.get(id=game.chat.id)).theme == "nomercy" and len(
         game.players[user.id].cards
@@ -954,9 +1005,9 @@ async def verify_cards(game: Game, c: Client, ir, user: User, ut, ct):
             games.pop(game.chat.id)
             await c.send_message(game.chat.id, ct("game_over"))
             game.stop()
-            await game.message.edit_text(ct("game_over"))
-            if (await Chat.get(id=game.chat.id)).auto_pin:
-                await game.message.unpin()
+            if game.message:
+                await game.message.edit_text(ct("game_over"))
+            await game.unpin_message()
         else:
             await c.send_message(
                 game.chat.id,

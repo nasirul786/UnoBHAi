@@ -53,5 +53,5 @@ cards = {}
 for filename in os.listdir("cards"):
     if filename.endswith(".json"):
         name = filename.split(".")[0]
-        with Path(f"cards/{filename}").open(encoding="locale") as f:
+        with Path(f"cards/{filename}").open(encoding="utf-8") as f:
             cards[name] = json.load(f)

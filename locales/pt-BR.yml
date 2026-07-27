@@ -5,115 +5,126 @@ back: Voltar
 theme: Tema
 settings_text: Configurações
 info_theme: Você escolhe um tema para as cartas
-seven_zero: 7-0
-info_seven: Quando um 7 é jogado, o jogador pode trocar as cartas com outro jogador.
-  Quando um 0 é jogado, todos passam as cartas para o próximo jogador.
-sbluff: Blefe
-info_bluff: Quando um jogador joga uma carta +4, o próximo pode desafiar. Se o jogador
-  que jogou a carta +4 tiver outra carta para jogar, ele compra 4 cartas. Se não tiver,
-  quem desafiou compra 6.
-one_win: Um vencedor
-info_one_win: Quando o primeiro jogador fica sem cartas, a partida acaba e ele é o
-  vencedor.
-one_card: Dizer UNO
-info_one_card: Quando um jogador tem apenas uma carta, ele deve dizer UNO. Se ele
-  não disser, ele deve comprar 2 cartas.
+seven_zero: Regra 7-0
+info_seven: "Ao jogar um 7, o jogador pode trocar de cartas com outro. Ao jogar um 0, todos passam as cartas para o próximo."
+sbluff: Regra de Desafio (Bluff)
+info_bluff: "Ao jogar um +4, o próximo pode desafiar. Se o +4 foi ilegal, quem jogou compra 4 cartas; se foi legal, o desafiante compra 6!"
+one_win: Um Vencedor
+info_one_win: "Quando o primeiro jogador ficar sem cartas, o jogo termina e ele é o vencedor."
+one_card: Regra UNO
+info_one_card: "Quando você tiver apenas 1 carta, deve gritar UNO. Se não gritar, comprará 2 cartas."
+auto_pin: Fixar Auto
+info_auto_pin: "O bot fixará automaticamente a mensagem do jogo ao iniciar."
+stack: Acumular Compras
+info_stack: "Ao receber +2/+4, você pode jogar outro +2/+4. O próximo comprará a soma total."
+draw_one: Comprar 1 carta
+info_draw_one: "Quando não puder jogar uma carta, compre 1 carta e passe o turno."
 language: Idioma
-info_lang: Você pode alterar o idioma do bot.
-choose_lang: Escolha um idioma
-start_text: "Olá! Eu sou o UNO Bot, um bot para jogar UNO no Telegram!\n\nPara jogar
-  me coloque em um grupo e mande /new para começar uma nova partida!\n\nou para configurar
-  use os botões abaixo!"
+info_lang: Altera o idioma do bot.
+choose_lang: "Escolha um idioma:"
+start_text: "Olá! Eu sou o UNO Bot para Telegram.\n\nAdicione-me a um grupo e envie /new para iniciar uma nova partida!"
+help: Ajuda
 game_mode: Modo de Jogo
 status: Status
-game_mode_text: "Mostrando informações dos modos de jogo disponíveis!\n\n"
-settings: "Bem vindo ao menu de configurações!\n\nEscolha uma opçãoe abaixo para configurar
-  o bot."
+game_mode_text: "Informações dos modos disponíveis:\n\n"
+settings: "Bem-vindo ao menu de configurações!\n\nEscolha uma opção abaixo:"
 theme_config: "Escolha um tema para as cartas:"
 minimalist: Minimalista
 classic: Clássico
 colorblind: Daltônico
-game_existis: Já existe uma partida em andamento!
-only_group: Esse comando só funciona em grupos!
-already_in_game: Você já está em outra partida
-already_joined: Você já está na partida!
+nomercy: Sem Piedade
+game_existis: Já existe um jogo em andamento!
+only_group: Este comando só funciona em grupos!
+already_in_game: Você já está em outro jogo!
+already_joined: Você já entrou no jogo!
 join: Entrar
 leave: Sair
-start_game: Iniciar partida
-game_started: Uma nova partida foi iniciada!
-no_game: Não há nenhuma partida em andamento!
-no_game_text: Nenhuma partida em andamento, mande /new para iniciar uma nova partida!
-lobby_closed: O lobby está fechado!
-lobby_opened: O lobby está aberto!
-joined_game: Você entrou na partida!
-player_joined: "{name} entrou na partida!"
-no_joinned: Você não está na partida!
-next: Próximo {name}
-game_over: A partida acabou!
-player_left: "{name} saiu da partida!"
-left_game: Você saiu da partida!
+start_game: Iniciar Jogo
+game_started: Um novo jogo foi iniciado!
+no_game: Não há nenhum jogo em andamento!
+no_game_text: Nenhum jogo em andamento. Envie /new para iniciar!
+lobby_closed: O lobby foi fechado!
+lobby_opened: O lobby foi aberto!
+joined_game: Você entrou no jogo!
+player_joined: "{name} entrou no jogo!"
+no_joinned: Você não está no jogo!
+next: "Próximo turno: {name}"
+game_over: O jogo acabou!
+player_left: "{name} saiu do jogo!"
+left_game: Você saiu do jogo!
 not_allowed: Você não tem permissão para fazer isso!
-game_already_started: A partida já começou!
-info_text: "🃏 Informações da partida:\nJogador atual - {current_player}\nÚltima carta
-  - {last_card}\n"
+game_already_started: O jogo já começou!
+info_text: "🃏 Informações do Jogo:\nJogador atual: {current_player}\nÚltima carta: {last_card}\n"
 info_text2: "{player}: {cards} cartas, "
 pass: Passar
 buy: Comprar {number} carta(s)
-bluff: Eu acho que você está blefando!
-cards_swapped: "{name1} trocou as cartas com {name2}"
-not_swapped: Devido ao numero de jogadores, não foi possível trocar as cartas!
+bluff: Eu acho que você está blufando!
+cards_swapped: "{name1} trocou de cartas com {name2}!"
+not_swapped: Não foi possível trocar cartas devido ao número de jogadores!
 swapped: As cartas foram trocadas!
-bought: Você comprou {number} cartas!
-bluffed: "{name} Você não pode blefar!\n{name} comprou {draw} cartas!"
-not_bluffed: "{name1} Você não blefou!\n{name2} comprou {draw} cartas!"
+bought: Você comprou {number} carta(s)!
+pbought: "{name} comprou {number} carta(s)!"
+bluffed: "{name} você não estava blufando!\n{name} comprou {draw} cartas!"
+not_bluffed: "{name1} não estava blufando!\n{name2} comprou {draw} cartas!"
 colorchoose: "{name} escolha uma cor!"
 colorchoosed: Eu escolhi a cor {color}!
 playerchoose: "{name} escolha um jogador!"
 invalid_card: Jogada inválida!
 said_uno: "{name} gritou UNO!"
-say_uno: "{name} fale UNO ou compre 2 cartas!"
-not_said_uno: "{name} Você não gritou UNO!\n{name} comprou 2 cartas!"
-won: "{name} ganhou a partida!"
-continuing: continuando a partida com {count} jogadores
-play: Jogar
-auto_pin: Auto pin
-info_auto_pin: Quando uma partida começar, o bot irá automaticamente fixar a mensagem
-  da partida.
-sudos: Alterar sudoers
-sudoers: "Usuários com permissões sudo:\n\n"
+say_uno: "{name} diga UNO ou compre 2 cartas!"
+not_said_uno: "{name} não disse UNO!\n{name} comprou 2 cartas!"
+won: "🎉 {name} venceu o jogo!"
+won_first: "🎉 {name} venceu em 1º lugar!"
+continuing: Continuando o jogo com {count} jogadores
+play: Jogar Carta
+admin_only: Apenas administradores do grupo podem usar isto!
+game_ruinning: Você não pode alterar as configurações durante uma partida!
+theme_changed: O tema foi alterado para {theme}!
+sudos: Gerenciar Sudoers
+sudo_menu: "Bem-vindo ao menu Sudo!\n\nEscolha uma opção:"
+sudoers: "Usuários com permissão Sudo:\n\n"
+add_sudo: Adicionar Usuário
+rm_sudo: Remover Usuário
+send_user_id: Envie o ID ou Username do usuário para adicionar
 user_not_found: Usuário não encontrado!
-add_theme: Adicionar novo tema
-update_card: Atualizar carta
-verify_card: Verificar cartas
+user_sudoer: "{user} já é um sudoer!"
+user_added: "{user} foi adicionado aos sudoers!"
+select_user: "Selecione um usuário para remover:\n\n"
+user_not_sudoer: "{user} não é um sudoer!"
+user_removed: "{user} foi removido!"
+add_theme: Adicionar Novo Tema
+send_theme_name: Envie o nome do novo tema
+send_sticker: "Envie um sticker para substituir:"
+theme_added: O tema {name} foi adicionado!
+add_card: Adicionar Carta
+update_card: Atualizar Carta
+verify_card: Verificar Cartas
+sudo_theme: O que deseja fazer com o tema {theme}?
+send_card_code: Envie o código da carta
 send_colored_card: Envie o sticker colorido para a carta {code}
+send_gray_card: Envie o sticker cinza para a carta {code}
+card_added: A carta {code} foi adicionada!
+card_removed: A carta {code} foi removida!
 light: Claro
 dark: Escuro
 choose_card: Escolha uma carta para atualizar
-user_added: '{user} foi adicionado aos sudoers!'
-user_not_sudoer: '{user} não é um sudoer!'
-user_removed: '{user} foi removido dos sudoers!'
-add_card: Adicionar nova carta
-select_user: "Selecione um usuário para remover dos sudoers\n\n"
-sudo_theme: O que você quer fazer com o tema {theme}?
-send_card_code: Envie o código da carta que você deseja adicionar
-send_theme_name: Envie o nome do novo tema
-send_sticker: 'Envie um sticker para substituir o sticker:'
-theme_added: O tema {name} foi adicionado!
-send_gray_card: Envie o sticker cinza para a carta {code}
-card_added: A carta {code} foi adicionada!
-rm_sudo: Remover usuário
-admin_only: Apenas o administrador do grupo pode usar isso!
-send_user_id: Enviar o ID do usuário ou username que você deseja adicionar aos sudoers
-help: Ajuda
-theme_changed: O tema foi alterado para {theme}!
-add_sudo: Adicionar usuário
-user_sudoer: '{user} já é um sudoer!'
-game_ruinning: Não é possível alterar as configurações enquanto uma partida estiver
-  em andamento!
-sudo_menu: "Bem-vindo ao menu de sudoers!\n\nEscolha uma opção abaixo para configurar
-  o bot."
-won_first: '{name} ganhou a partida em primeiro lugar!'
-left_game_private: Você saiu da partida em {group}!
-remove_reply_required: Responda à mensagem de um jogador para removê-lo da partida!
-player_removed: "{admin} removeu {name} da partida!"
-player_not_in_game: Este jogador não está na partida!
+skip_all: "{name} pulou todos os jogadores!"
+discarted_all: "{name} descartou {count} cartas!"
+dev_mode: \nModo Desenvolvedor
+left_game_private: Você saiu do jogo em {group}!
+remove_reply_required: Responda à mensagem de um jogador para removê-lo!
+player_removed: "{admin} removeu {name} do jogo!"
+player_not_in_game: Este jogador não está no jogo!
+timeout_setting: Tempo de Turno
+info_timeout: Ajusta o tempo máximo limite por turno.
+timeout_skipped: "⏰ Tempo esgotado! {name} foi pulado e comprou {count} carta(s)."
+timeout_changed: "Tempo de turno alterado para {timeout} segundos!"
+choose_card_color: "Escolha a cor da carta a atualizar:"
+choose_card_value: "Escolha o valor da carta a atualizar:"
+send_sticker_to_replace: "Envie um sticker para substituir esta carta:"
+card_updated_success: "Carta atualizada com sucesso!"
+checking_colored_cards: "Verificando cartas coloridas..."
+checking_gray_cards: "Verificando cartas cinzas..."
+cards_verified_success: "Todas as cartas foram verificadas com sucesso!"
+card_not_found_send_sticker: "Carta {card} não encontrada, envie um sticker para substituí-la:"
+card_updated: "Carta {card} atualizada com sucesso!"

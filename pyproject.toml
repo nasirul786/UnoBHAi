@@ -7,13 +7,15 @@ readme = "README.rst"
 dependencies = [
   "PyYAML",
   "hydrogram @ https://github.com/hydrogram/hydrogram/archive/dev.zip",
-  "tgcrypto",
   "tortoise-orm"
 ]
 requires-python = ">=3.10"
-
 authors = [{ name = "Amano LLC", email = "contact@amanoteam.com" }]
 license = { text = "MIT" }
+
+[project.optional-dependencies]
+fast = ["tgcrypto"]
+
 
 [build-system]
 requires = ["hatchling"]

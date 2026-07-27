@@ -1,115 +1,130 @@
-playerchoose: '{name} elektas ludiston!'
-said_uno: '{name} kriegis UNO!'
-not_said_uno: "{name} Vi ne kriegis UNO!\n{name} tiris 2 kartojn!"
-cards_swapped: '{name1} interŝanĝita kartojn kun {name2}'
-bought: Vi aĉetis {number} kartojn!
-say_uno: '{name} diras UNO aŭ tiro 2 kartoj!'
-continuing: daŭranta la ludon kun {count} ludistoj
-won: '{name} gajnis la ludon!'
-left_game: Vi lasis la ludon!
+lang_name: Esperanto
+lang_flag: 🌐
+lang_changed: La lingvo estis ŝanĝita al Esperanto!
+back: Reen
+theme: Etoso
+settings_text: Agordoj
+info_theme: Elektu etoson por la kartoj
+seven_zero: Regulo 7-0
+info_seven: "Kiam oni ludas 7, oni rajtas interŝanĝi kartojn. Kiam oni ludas 0, ĉiuj donas kartojn al la sekva ludanto."
+sbluff: Regulo Blufa
+info_bluff: "Ĉe +4, la sekva ludanto rajtas defii. Se +4 estis senrajta, la ludinto tiras 4 kartojn; se rajta, la defiinto tiras 6!"
+one_win: Unu Venkinto
+info_one_win: "Kiam la unua ludanto finas siajn kartojn, la ludo finiĝas kaj tiu venkas."
+one_card: Regulo UNO
+info_one_card: "Kiam restas nur 1 karto, oni devas diri UNO. Alie oni tiras 2 kartojn."
+auto_pin: Aŭtomata Pinglo
+info_auto_pin: "La roboto aŭtomate pinglos la ludmesaĝon komence."
+stack: Kart-Stakigo
+info_stack: "Ĉe +2/+4, oni rajtas ludi alian +2/+4. La sekva ludanto tiros la tutan sumon."
+draw_one: Tiri 1 karton
+info_draw_one: "Se oni ne povas ludi karton, oni tiras 1 karton kaj preterpasas la vicon."
+language: Lingvo
+info_lang: Ŝanĝu la lingvon de la roboto.
+choose_lang: "Elektu lingvon:"
+start_text: "Saluton! Mi estas la UNO-Roboto en Telegramo.\n\nAldonu min al grupo kaj sendu /new por komenci novan ludon!"
+help: Helpo
+game_mode: Ludmodo
+status: Statuso
+game_mode_text: "Informoj pri disponeblaj ludmodoj:\n\n"
+settings: "Bonvenon al la agorda menuo!\n\nElektu opcion malsupre:"
+theme_config: "Elektu etoson por la kartoj:"
+minimalist: Minimumisma
+classic: Klasika
+colorblind: Daltonisma
+nomercy: Sen Kompatemo
+game_existis: Ludo jam komenciĝis!
+only_group: Ĉi tiu komando funkcias nur en grupoj!
+already_in_game: Vi jam estas en alia ludo!
+already_joined: Vi jam aliĝis al la ludo!
+join: Aliĝi
+leave: Forlasi
+start_game: Komenci Ludon
+game_started: Nova ludo komenciĝis!
+no_game: Neniu ludo meze de la vojo!
+no_game_text: Neniu ludo aktiva. Sendu /new por komenci!
+lobby_closed: La halo estas fermita!
+lobby_opened: La halo estas malfermita!
+joined_game: Vi aliĝis al la ludo!
+player_joined: "{name} aliĝis al la ludo!"
+no_joinned: Vi ne estas en la ludo!
+next: "Sekva vico: {name}"
+game_over: La ludo finiĝis!
+player_left: "{name} forlasis la ludon!"
+left_game: Vi forlasis la ludon!
 not_allowed: Vi ne rajtas fari tion!
 game_already_started: La ludo jam komenciĝis!
-info_text: "🃏 Ludo-Informo:\nNuna ludanto * {current_player}\nLasta karto - {last_card}\n"
-info_text2: '{player}: {cards} kartoj, '
-pass: Pasi
-buy: Aĉetu {number} karto(j)n
-bluff: Mi kredas, ke vi estas malklarigita!
-not_swapped: Pro la nombro de ludantoj, ne eblas interŝanĝi kartojn!
-swapped: La kartoj estis interŝanĝitaj!
-bluffed: "{name} Vi povas ne blufon!\n{name} tiris {draw} kartojn!"
-not_bluffed: "{name1} Vi faris ne blufon!\n{name2} tiris {draw} kartojn!"
-colorchoose: '{name} elektas koloron!'
-colorchoosed: Mi elektis la koloran {color}!
-invalid_card: Invalida movo!
-play: Ludado
-admin_only: Nur la grupo povas uzi tion!
-game_ruinning: Vi ne povas ŝanĝi la agordojn dum ludo kuras!
-theme_changed: La temo estis ŝanĝita al {theme}!
-sudos: Ŝanĝo sudoers
-sudo_menu: "Bonvenon al la interna menuo!\n\nElekti opcion malsupre por agordi la
-  roboton."
-sudoers: "Uzantoj kun internaj permesoj:\n\n"
-add_sudo: Aldonu uzanton
-rm_sudo: Forigu uzanton
-send_user_id: Sendu la uzanto ID aŭ uzantnomo vi volas aldoni al la fremduloj
+info_text: "🃏 Ludaj Informoj:\nAktuala ludanto: {current_player}\nLasta karto: {last_card}\n"
+info_text2: "{player}: {cards} kartoj, "
+pass: Preterpasi
+buy: Tiri {number} karton(j)n
+bluff: Mi pensas ke vi blufas!
+cards_swapped: "{name1} interŝanĝis kartojn kun {name2}!"
+not_swapped: Ne eblis interŝanĝi kartojn pro ludantnombro!
+swapped: Kartoj estas interŝanĝitaj!
+bought: Vi tiris {number} karton(j)n!
+pbought: "{name} tiris {number} karton(j)n!"
+bluffed: "{name} vi ne blufis!\n{name} tiras {draw} kartojn!"
+not_bluffed: "{name1} ne blufis!\n{name2} tiras {draw} kartojn!"
+colorchoose: "{name} elektu koloron!"
+colorchoosed: Mi elektis la koloron {color}!
+playerchoose: "{name} elektu ludanton!"
+invalid_card: Nevalida moŝto!
+said_uno: "{name} kriegis UNO!"
+say_uno: "{name} diru UNO aŭ tiru 2 kartojn!"
+not_said_uno: "{name} ne diris UNO!\n{name} tiras 2 kartojn!"
+won: "🎉 {name} venkis la ludon!"
+won_first: "🎉 {name} venkis en la 1-a loko!"
+continuing: Daŭrigante la ludon kun {count} ludantoj
+play: Ludi Karton
+admin_only: Nur grupaj administrantoj rajtas uzadi ĉi tion!
+game_ruinning: Vi ne rajtas ŝanĝi agordojn dum ludo!
+theme_changed: La etoso estis ŝanĝita al {theme}!
+sudos: Administri Sudo-uzantojn
+sudo_menu: "Bonvenon al la Sudo-menuo!\n\nElektu opcion:"
+sudoers: "Uzantoj kun Sudo-rajtoj:\n\n"
+add_sudo: Aldoni Uzanton
+rm_sudo: Forigi Uzanton
+send_user_id: Sendu la Uzant-ID aŭ Uzantnomon
 user_not_found: Uzanto ne trovita!
-user_sudoer: '{user} estas jam sudoer!'
-user_added: '{user} estis aldonita la sudoers!'
-select_user: "Selektu uzanton forigi de la suduloj\n\n"
-user_not_sudoer: '{user} ne estas sudoer!'
-user_removed: '{user} estis forigita de la sudoers!'
-add_theme: Aldonas novan temon
-send_theme_name: Sendu la nomon de la nova temo
-send_sticker: 'Sendu glumarkon por anstataŭigi la glumarkon:'
-theme_added: La tema {name} estis aldonita!
-update_card: Ĝisdatigita karto
-verify_card: Kontrolu kartojn
-sudo_theme: Kion vi volas fari kun la temo {theme}?
-send_card_code: Sendu la kodon de la karto vi volas aldoni
-send_gray_card: Sendu la grizan glumarkon {code} karto
-send_colored_card: Sendu la koloran glumarkon {code} karto
-card_added: La karto {code} estis aldonita!
+user_sudoer: "{user} jam estas sudo-uzanto!"
+user_added: "{user} estas aldonita!"
+select_user: "Elektu uzanton por forigi:\n\n"
+user_not_sudoer: "{user} ne estas sudo-uzanto!"
+user_removed: "{user} estas forigita!"
+add_theme: Aldoni Novan Etoson
+send_theme_name: Sendu la nomon de la nova etoso
+send_sticker: "Sendu glulabilon por anstataŭigi:"
+theme_added: La etoso {name} estas aldonita!
+add_card: Aldoni Karton
+update_card: Ĝisdatigi Karton
+verify_card: Kontroli Kartojn
+sudo_theme: Kion vi volas fari pri la etoso {theme}?
+send_card_code: Sendu la kodon de la karto
+send_colored_card: Sendu la koloran glulabilon por {code}
+send_gray_card: Sendu la grizan glulabilon por {code}
+card_added: La karto {code} estas aldonita!
+card_removed: La karto {code} estas forigita!
 light: Hela
 dark: Malhela
 choose_card: Elektu karton por ĝisdatigi
-add_card: Aldonu novan karton
-lang_name: Esperanto
-lang_flag: 🌐
-lang_changed: La lingvo ŝanĝiĝis al Esperanto!
-info_theme: Vi elektas temon por la kartoj
-seven_zero: 7-0
-sbluff: Blufo
-info_bluff: Kiam ludanto ludas +4 karton, la venonta povas defii. Se la ludanto kiu
-  ludis la +4 karton havas alian karton por ludi, ili tiras 4 kartojn. Se ne, tiu
-  kiu defiis remizojn 6.
-one_win: Unu gajninto
-one_card: Diru al UNO
-info_one_card: Kiam ludanto havas nur unu karton, ili devas diri UNO. Se ili ne faras,
-  ili devas tiri 2 kartojn.
-auto_pin: Aŭtomobila pinglo
-language: Lingvo
-choose_lang: Elektu lingvon
-help: Helpo
-game_mode: Ludreĝimo
-start_text: "Saluton! Mi estas la UNO Bot, roboto por ludi UNO en Telegram!\n\nPor
-  ludi, meti min en grupon kaj sendi /new por komenci novan ludon!\n\naŭ agordi uzi
-  la butonojn malsupre!"
-status: Statuso
-game_mode_text: "Montrante informojn de disponeblaj ludreĝimoj!\n\n"
-settings: "Bonvenon al la agordo menuo!\n\nElekti opcion malsupre por agordi la roboton."
-only_group: Tiu komando funkcias nur en grupoj!
-already_in_game: Vi jam estas en alia ludo
-already_joined: Vi jam estas en la ludo!
-join: Aliĝi
-no_game: Ne ekzistas ludo en progreso!
-no_game_text: Neniu ludo en progreso, sendu /new por komenci novan ludon!
-lobby_closed: La vestiblo estas fermita!
-lobby_opened: La vestiblo estas malfermita!
-joined_game: Vi eniris la ludon!
-player_joined: '{name} aliĝis al la ludo!'
-no_joinned: Vi ne estas en la ludo!
-next: Sekva {name}
-game_over: La ludo estas finita!
-player_left: '{name} lasis la ludon!'
-back: Reen
-theme: Temo
-settings_text: Agordoj
-info_seven: Kiam 7 estas ludita, la ludanto povas interŝanĝi kartojn kun alia ludanto.
-  Kiam 0 estas ludita, ĉiuj pasas siajn kartojn al la venonta ludanto.
-info_one_win: Kiam la unua ludanto elĉerpas kartojn, la ludo finiĝas kaj ili estas
-  la gajninto.
-info_lang: Vi povas ŝanĝi la lingvon de la roboto.
-info_auto_pin: Kiam ludo komenciĝas, la roboto aŭtomate alpinglas la ludmesaĝon.
-colorblind: Koloroblinda
-game_started: Nova ludo komenciĝis!
-theme_config: 'Elektu temon por la kartoj:'
-classic: Klasika Klasikaĵo
-game_existis: Estas jam ludo en progreso!
-minimalist: Minimumisto
-leave: Lasu min foriri
-start_game: Komencu ludon
-won_first: '{name} gajnis la ludon en unua loko!'
-left_game_private: Vi lasis la ludon en {group}!
-remove_reply_required: Respondu al la mesaĝo de ludanto por forigi ilin de la ludo!
+skip_all: "{name} preterpasis ĉiujn ludantojn!"
+discarted_all: "{name} forĵetis {count} kartojn!"
+dev_mode: \nProgramista modo
+left_game_private: Vi forlasis la ludon en {group}!
+remove_reply_required: Respondas al mesaĝo de ludanto por forigi lin!
 player_removed: "{admin} forigis {name} de la ludo!"
 player_not_in_game: Ĉi tiu ludanto ne estas en la ludo!
+timeout_setting: Vica Tempolimo
+info_timeout: Agordi la tempolimon por ĉiu vico.
+timeout_skipped: "⏰ Tempo forpasis! {name} estis preterpasita kaj tiris {count} karton(j)n."
+timeout_changed: "Vica tempolimo agordita al {timeout} sekundoj!"
+choose_card_color: "Elektu la koloron de la ĝisdatigenda karto:"
+choose_card_value: "Elektu la valoron de la ĝisdatigenda karto:"
+send_sticker_to_replace: "Sendu glulabilon por anstataŭigi ĉi tiun karton:"
+card_updated_success: "Karto sukcese ĝisdatigita!"
+checking_colored_cards: "Kontrolante kolorajn kartojn..."
+checking_gray_cards: "Kontrolante grizajn kartojn..."
+cards_verified_success: "Ĉiuj kartoj sukcese kontrolitaj!"
+card_not_found_send_sticker: "Karto {card} ne trovita, sendu glulabilon por anstataŭigi ĝin:"
+card_updated: "Karto {card} sukcese ĝisdatigita!"

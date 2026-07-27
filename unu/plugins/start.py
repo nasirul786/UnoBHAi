@@ -40,22 +40,10 @@ async def help_game(c: Client, cq: CallbackQuery, t):
 @Client.on_message(filters.command("status"))
 @Client.on_callback_query(filters.regex("^status$"))
 async def status(c: Client, m: Message | CallbackQuery):
-    user = await User.get_or_create(id=m.from_user.id)
-    porcentagem = (user[0].wins / user[0].matches) * 100 if user[0].matches > 0 else 0
-    if (await User.get(id=m.from_user.id)).placar:
-        text = f"{user[0].matches} games played\n{user[0].wins} times in first place ({porcentagem}%)\n{user[0].cards} cards played"
-       
-    else:
-        text = "Call to see your stats like how many games played, how many times you got first place, and how many cards played."
+    user = (await User.get_or_create(id=m.from_user.id))[0]
+    porcentagem = (user.wins / user.matches) * 100 if user.matches > 0 else 0
+    text = f"📊 User Statistics:\n• {user.matches} games played\n• {user.wins} times in first place ({porcentagem:.1f}%)\n• {user.cards} cards played"
     if isinstance(m, Message):
         await m.reply_text(text)
     else:
-        await m.answer(text, show_alert=True)
-
-@Client.on_callback_query(filters.regex("^ch_status$"))
-async def ch_status(c: Client, cq: CallbackQuery):
-    user = await User.get_or_create(id=cq.from_user.id)
-    user = user[0]
-    user.placar = not user.placar
-    await user.save()
-    await cq.answer("Status changed successfully")
+        await m.answer(text, show_alert=True)

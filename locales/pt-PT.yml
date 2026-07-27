@@ -1,119 +1,130 @@
-game_already_started: A partida já começou!
-info_text2: '{player}: {cards} cartas, '
-pass: Passar
-buy: Comprar {number} carta(s)
-cards_swapped: '{name1} trocou cartas com {name2}'
-not_swapped: Devido ao número de jogadores, não foi possível trocar as cartas!
-swapped: As cartas foram trocadas!
-bought: Comprou {number} cartas!
-bluff: Acho que está a fazer blefe!
-not_bluffed: "{name1} Não fizeste bluff!\n{name2} sacou {draw} cartas!"
-colorchoose: '{name} escolha uma cor!'
-colorchoosed: Escolhi a cor {color}!
+lang_name: Português (Portugal)
+lang_flag: 🇵🇹
+lang_changed: O idioma foi alterado para Português (Portugal)!
 back: Voltar
 theme: Tema
 settings_text: Definições
-seven_zero: 7-0
-sbluff: Blefe
-info_bluff: Quando um jogador joga uma carta +4, o próximo jogador pode desafiar.
-  Se o jogador que jogou a carta +4 tiver outra carta para jogar, ele compra 4 cartas.
-  Caso contrário, o jogador que desafiou tira 6.
-one_win: Um vencedor
-info_one_win: Quando o primeiro jogador ficar sem cartas, a partida termina e ele
-  é o vencedor.
-one_card: Dizer UNO
-auto_pin: Fixação automática
-info_auto_pin: Quando uma partida começa, o bot fixa automaticamente a mensagem da
-  partida.
-language: Língua
-info_lang: Pode alterar o idioma do bot.
-choose_lang: Escolher uma língua
+info_theme: Escolhe um tema para as cartas
+seven_zero: Regra 7-0
+info_seven: "Ao jogar um 7, podes trocar cartas com outro jogador. Ao jogar um 0, todos passam as cartas ao jogador seguinte."
+sbluff: Regra de Desafio (Bluff)
+info_bluff: "Perante um +4, o jogador seguinte pode desafiar. Se o +4 foi ilegal, quem jogou compra 4 cartas; se foi legal, o desafiador compra 6!"
+one_win: Um Vencedor
+info_one_win: "Quando o primeiro jogador ficar sem cartas, o jogo termina e ele é o vencedor."
+one_card: Regra UNO
+info_one_card: "Quando tiveres apenas 1 carta, deves gritar UNO. Se não gritares, compras 2 cartas."
+auto_pin: Afixar Auto
+info_auto_pin: "O bot afixará automaticamente a mensagem do jogo ao iniciar."
+stack: Acumular Compras
+info_stack: "Ao receber +2/+4, podes jogar outro +2/+4. O seguinte comprará a soma total."
+draw_one: Comprar 1 carta
+info_draw_one: "Quando não puderes jogar uma carta, compra 1 carta e passa o turno."
+language: Idioma
+info_lang: Altera o idioma do bot.
+choose_lang: "Escolhe um idioma:"
+start_text: "Olá! Sou o UNO Bot no Telegram.\n\nAdiciona-me a um grupo e envia /new para começar um novo jogo!"
 help: Ajuda
-game_mode: Modo de jogo
+game_mode: Modo de Jogo
 status: Estado
-game_mode_text: "Mostrar informações sobre os modos de jogo disponíveis!\n\n"
-settings: "Bem-vindo ao menu de definições!\n\nEscolha uma opção abaixo para configurar
-  o bot."
-theme_config: 'Escolha um tema para as cartas:'
+game_mode_text: "Informações dos modos disponíveis:\n\n"
+settings: "Bem-vindo ao menu de definições!\n\nEscolhe uma opção abaixo:"
+theme_config: "Escolhe um tema para as cartas:"
 minimalist: Minimalista
 classic: Clássico
 colorblind: Daltónico
-game_existis: Já está a decorrer uma partida!
+nomercy: Sem Piedade
+game_existis: Já existe um jogo em curso!
 only_group: Este comando só funciona em grupos!
-already_in_game: Já está noutra partida
-already_joined: Já estás na partida!
-join: Aderir
+already_in_game: Já estás noutro jogo!
+already_joined: Já entraste no jogo!
+join: Entrar
 leave: Sair
-game_started: Começou uma nova partida!
-no_game: Não há nenhuma partida em curso!
-lobby_closed: O átrio está fechado!
-lobby_opened: O átrio está aberto!
-joined_game: Entraste na partida!
-player_joined: '{name} entrou na partida!'
-no_joinned: Não estás na partida!
-next: Seguinte {name}
-game_over: A partida acabou!
-player_left: '{name} deixou a partida!'
-left_game: Deixaste a partida!
-said_uno: '{name} gritou UNO!'
-say_uno: '{name} diz UNO ou compra 2 cartas!'
-not_said_uno: "{name} Não gritaste UNO!\n{name} sacou 2 cartas!"
-continuing: continuar a partida com {count} jogadores
-play: Jogar
-admin_only: Apenas o administrador do grupo pode utilizar esta opção!
+start_game: Iniciar Jogo
+game_started: Um novo jogo foi iniciado!
+no_game: Não há nenhum jogo em curso!
+no_game_text: Nenhum jogo em curso. Envia /new para iniciar!
+lobby_closed: O lobby foi fechado!
+lobby_opened: O lobby foi aberto!
+joined_game: Entraste no jogo!
+player_joined: "{name} entrou no jogo!"
+no_joinned: Não estás no jogo!
+next: "Turno seguinte: {name}"
+game_over: O jogo terminou!
+player_left: "{name} saiu do jogo!"
+left_game: Saíste do jogo!
+not_allowed: Não tens permissão para fazer isso!
+game_already_started: O jogo já começou!
+info_text: "🃏 Informações do Jogo:\nJogador atual: {current_player}\nÚltima carta: {last_card}\n"
+info_text2: "{player}: {cards} cartas, "
+pass: Passar
+buy: Comprar {number} carta(s)
+bluff: Eu acho que estás a fazer bluff!
+cards_swapped: "{name1} trocou cartas com {name2}!"
+not_swapped: Não foi possível trocar cartas devido ao número de jogadores!
+swapped: As cartas foram trocadas!
+bought: Compraste {number} carta(s)!
+pbought: "{name} comprou {number} carta(s)!"
+bluffed: "{name} não estavas a fazer bluff!\n{name} comprou {draw} cartas!"
+not_bluffed: "{name1} não estava a fazer bluff!\n{name2} comprou {draw} cartas!"
+colorchoose: "{name} escolhe uma cor!"
+colorchoosed: Escolhi a cor {color}!
+playerchoose: "{name} escolhe um jogador!"
+invalid_card: Jogada inválida!
+said_uno: "{name} gritou UNO!"
+say_uno: "{name} diz UNO ou compra 2 cartas!"
+not_said_uno: "{name} não disse UNO!\n{name} comprou 2 cartas!"
+won: "🎉 {name} venceu o jogo!"
+won_first: "🎉 {name} venceu em 1º lugar!"
+continuing: A continuar o jogo com {count} jogadores
+play: Jogar Carta
+admin_only: Apenas administradores do grupo podem usar isto!
+game_ruinning: Não podes alterar as definições durante uma partida!
 theme_changed: O tema foi alterado para {theme}!
-sudos: Alterar sudoers
-sudo_menu: "Bem-vindo ao menu sudoers!\n\nEscolha uma opção abaixo para configurar
-  o bot."
-sudoers: "Utilizadores com permissões sudo:\n\n"
-add_sudo: Adicionar utilizador
-rm_sudo: Remover utilizador
+sudos: Gerir Sudoers
+sudo_menu: "Bem-vindo ao menu Sudo!\n\nEscolhe uma opção:"
+sudoers: "Utilizadores com permissão Sudo:\n\n"
+add_sudo: Adicionar Utilizador
+rm_sudo: Remover Utilizador
+send_user_id: Envia o ID ou Username do utilizador para adicionar
 user_not_found: Utilizador não encontrado!
-user_sudoer: '{user} já é um sudoer!'
-user_added: '{user} foi adicionado aos sudoers!'
-select_user: "Selecionar um utilizador para remover dos sudoers\n\n"
-user_not_sudoer: '{user} não é um sudoer!'
-add_theme: Adicionar novo tema
-send_theme_name: Enviar o nome do novo tema
-send_sticker: 'Enviar um sticker para substituir o sticker:'
+user_sudoer: "{user} já é um sudoer!"
+user_added: "{user} foi adicionado aos sudoers!"
+select_user: "Seleciona um utilizador para remover:\n\n"
+user_not_sudoer: "{user} não é um sudoer!"
+user_removed: "{user} foi removido!"
+add_theme: Adicionar Novo Tema
+send_theme_name: Envia o nome do novo tema
+send_sticker: "Envia um sticker para substituir:"
 theme_added: O tema {name} foi adicionado!
-add_card: Adicionar nova carta
-update_card: Atualizar carta
-sudo_theme: O que pretende fazer com o tema {theme}?
-send_card_code: Enviar o código da carta que pretende adicionar
-send_gray_card: Enviar o sticker cinzento para a carta {code}
+add_card: Adicionar Carta
+update_card: Atualizar Carta
+verify_card: Verificar Cartas
+sudo_theme: O que queres fazer com o tema {theme}?
+send_card_code: Envia o código da carta
+send_colored_card: Envia o sticker colorido para {code}
+send_gray_card: Envia o sticker cinzento para {code}
 card_added: A carta {code} foi adicionada!
+card_removed: A carta {code} foi removida!
 light: Claro
 dark: Escuro
-choose_card: Escolher uma carta para atualizar
-info_seven: Quando é jogado um 7, o jogador pode trocar cartas com outro jogador.
-  Quando é jogado um 0, todos passam as suas cartas para o jogador seguinte.
-game_ruinning: Não é possível alterar as definições enquanto uma partida está a decorrer!
-info_theme: Escolhe um tema para as cartas
-start_text: "Olá! Eu sou o UNO Bot, um bot para jogar UNO no Telegram!\n\nPara jogar,
-  coloca-me num grupo e envia /new para começar uma nova partida!\n\nou para configurar
-  usa os botões abaixo!"
-start_game: Iniciar a partida
-not_allowed: Não é permitido fazer isso!
-lang_name: Português (Portugal)
-info_one_card: Quando um jogador tem apenas uma carta, deve dizer UNO. Se não o fizer,
-  tem de comprar 2 cartas.
-no_game_text: Não há partida em curso, enviar /new para iniciar uma nova partida!
-info_text: "🃏 Informações sobre a partida:\nJogador atual - {current_player}\nÚltima
-  carta - {last_card}\n"
-invalid_card: Movimento inválido!
-send_colored_card: Enviar o sticker colorido para a carta {code}
-lang_flag: 🇵🇹
-lang_changed: A língua foi alterada para português!
-bluffed: "{name} Não se pode fazer blefe!\n{name} sacou {draw} cartas!"
-playerchoose: '{name} escolha um jogador!'
-won: '{name} ganhou a partida!'
-verify_card: Verificar cartas
-user_removed: '{user} foi removido dos sudoers!'
-send_user_id: Enviar o ID de utilizador ou o nome de utilizador que pretende adicionar
-  aos sudoers
-won_first: '{name} ganhou a partida em primeiro lugar!'
-left_game_private: Deixaste a partida em {group}!
-remove_reply_required: Responde à mensagem de um jogador para removê-lo da partida!
-player_removed: "{admin} removeu {name} da partida!"
-player_not_in_game: Este jogador não está na partida!
+choose_card: Escolhe uma carta para atualizar
+skip_all: "{name} saltou todos os jogadores!"
+discarted_all: "{name} descartou {count} cartas!"
+dev_mode: \nModo Programador
+left_game_private: Saíste do jogo em {group}!
+remove_reply_required: Responde à mensagem de um jogador para o removeres!
+player_removed: "{admin} removeu {name} do jogo!"
+player_not_in_game: Este jogador não está no jogo!
+timeout_setting: Tempo de Turno
+info_timeout: Ajusta o tempo limite por turno.
+timeout_skipped: "⏰ Tempo esgotado! {name} foi saltado e comprou {count} carta(s)."
+timeout_changed: "Tempo de turno alterado para {timeout} segundos!"
+choose_card_color: "Escolhe a cor da carta a atualizar:"
+choose_card_value: "Escolhe o valor da carta a atualizar:"
+send_sticker_to_replace: "Envia um sticker para substituir esta carta:"
+card_updated_success: "Carta atualizada com sucesso!"
+checking_colored_cards: "A verificar cartas coloridas..."
+checking_gray_cards: "A verificar cartas cinzentas..."
+cards_verified_success: "Todas as cartas foram verificadas com sucesso!"
+card_not_found_send_sticker: "Carta {card} não encontrada, envia um sticker para substituir:"
+card_updated: "Carta {card} atualizada com sucesso!"

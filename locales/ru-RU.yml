@@ -1,118 +1,130 @@
 lang_name: Русский
 lang_flag: 🇷🇺
-lang_changed: Язык был изменен на русский!
+lang_changed: Язык изменён на Русский!
 back: Назад
 theme: Тема
-info_theme: Вы выбираете тему для карт
-seven_zero: 7-0
-info_seven: Когда играет 7, игрок может обменяться картами с другим игроком. Когда
-  играет 0, все передают свои карты следующему игроку.
-sbluff: Блеф
-info_bluff: Когда игрок играет карту +4, следующий может вызвать. Если у игрока, который
-  сыграл карту +4, есть другая карта для игры, они берут 4 карты. Если нет, тот, кто
-  вызвал, берет 6.
-one_win: Один победитель
-info_one_win: Когда у первого игрока заканчиваются карты, игра заканчивается, и они
-  становятся победителем.
-one_card: Скажите УНО
-info_one_card: Когда у игрока остается только одна карта, они должны сказать УНО.
-  Если они этого не делают, они должны взять 2 карты.
-auto_pin: Авто закрепление
-info_auto_pin: Когда игра начинается, бот автоматически закрепляет сообщение игры.
+settings_text: Настройки
+info_theme: Выберите тему для карт
+seven_zero: Правило 7-0
+info_seven: "При ходе 7 игрок обменивается картами с другим. При ходе 0 все передают карты следующему."
+sbluff: Правило Блефа
+info_bluff: "При сыгранном +4 следующий может проверить. Если +4 был нелегальным, сыгравший берет 4 карты, иначе проверяющий берет 6!"
+one_win: Один Победитель
+info_one_win: "Когда у первого игрока заканчиваются карты, игра завершается его победой."
+one_card: Правило UNO
+info_one_card: "Когда остается 1 карта, нужно сказать UNO. Если не сказать, придется взять 2 карты."
+auto_pin: Автозакреп
+info_auto_pin: "Бот автоматически закрепит сообщение с игрой при старте."
+stack: Сложение Карт
+info_stack: "На +2/+4 можно ответить своим +2/+4. Следующий игрок берет сумму карт."
+draw_one: Взять 1 карту
+info_draw_one: "Если нечем ходить, игрок берет 1 карту и передает ход."
 language: Язык
-info_lang: Вы можете изменить язык бота.
-choose_lang: Выберите язык
-start_text: "Привет! Я - бот UNO, бот для игры в UNO в Telegram!\n\nЧтобы играть,
-  добавьте меня в группу и отправьте /new, чтобы начать новую игру!\n\nили для настройки
-  используйте кнопки ниже!"
+info_lang: Изменить язык бота.
+choose_lang: "Выберите язык:"
+start_text: "Привет! Я UNO Бот для Telegram.\n\nДобавь меня в группу и отправь /new, чтобы начать игру!"
 help: Помощь
-game_mode: Режим игры
+game_mode: Режим Игры
 status: Статус
-game_mode_text: "Показ информации о доступных режимах игры!\n\n"
-settings: "Добро пожаловать в меню настроек!\n\nВыберите опцию ниже, чтобы настроить
-  бота."
-theme_config: "Выберите тему для карт:"
-minimalist: Минималист
-classic: Классический
+game_mode_text: "Информация о доступных режимах:\n\n"
+settings: "Добро пожаловать в настройки!\n\nВыберите опцию ниже:"
+theme_config: "Выберите тему карт:"
+minimalist: Минимализм
+classic: Классическая
 colorblind: Для дальтоников
+nomercy: Без пощады
 game_existis: Игра уже идет!
 only_group: Эта команда работает только в группах!
-already_in_game: Вы уже в другой игре
+already_in_game: Вы уже участвуете в другой игре!
 already_joined: Вы уже в игре!
 join: Присоединиться
-leave: Покинуть
-start_game: Начать игру
+leave: Выйти
+start_game: Начать Игру
 game_started: Новая игра началась!
-no_game: Игра не идет!
-no_game_text: Игра не идет, отправьте /new, чтобы начать новую игру!
+no_game: Сейчас нет активных игр!
+no_game_text: Нет активной игры. Отправьте /new, чтобы начать!
 lobby_closed: Лобби закрыто!
 lobby_opened: Лобби открыто!
 joined_game: Вы присоединились к игре!
 player_joined: "{name} присоединился к игре!"
 no_joinned: Вы не в игре!
-next: Следующий {name}
+next: "Следующий ход: {name}"
 game_over: Игра окончена!
 player_left: "{name} покинул игру!"
-left_game: Вы покинули игру!
-not_allowed: Вам не разрешено это делать!
+left_game: Вы вышли из игры!
+not_allowed: У вас нет прав для этого!
 game_already_started: Игра уже началась!
-info_text: "🃏 Информация об игре:\nТекущий игрок - {current_player}\nПоследняя карта
-  - {last_card}\n"
+info_text: "🃏 Информация об Игре:\nТекущий игрок: {current_player}\nПоследняя карта: {last_card}\n"
 info_text2: "{player}: {cards} карт, "
-pass: Пропустить
-buy: Купить {number} карт(ы)
+pass: Пас
+buy: Взять {number} карту(ы)
 bluff: Я думаю, ты блефуешь!
-cards_swapped: "{name1} обменялся картами с {name2}"
-not_swapped: Из-за количества игроков обмен картами был невозможен!
+cards_swapped: "{name1} обменялся картами с {name2}!"
+not_swapped: Не удалось обменяться картами из-за количества игроков!
 swapped: Карты были обменены!
-bought: Вы купили {number} карты!
-bluffed: "{name} Ты не можешь блефовать!\n{name} взял {draw} карты!"
-not_bluffed: "{name1} Ты не блефовал!\n{name2} взял {draw} карты!"
+bought: Вы взяли {number} карту(ы)!
+pbought: "{name} взял {number} карту(ы)!"
+bluffed: "{name} ты не блефовал!\n{name} берет {draw} карт!"
+not_bluffed: "{name1} не блефовал!\n{name2} берет {draw} карт!"
 colorchoose: "{name} выберите цвет!"
 colorchoosed: Я выбрал цвет {color}!
 playerchoose: "{name} выберите игрока!"
 invalid_card: Недопустимый ход!
-said_uno: "{name} крикнул УНО!"
-say_uno: "{name} скажите УНО или возьмите 2 карты!"
-not_said_uno: "{name} Ты не крикнул УНО!\n{name} взял 2 карты!"
-won: "{name} выиграли игру!"
-continuing: продолжение игры с {count} игроками
-play: Играть
-admin_only: Только админ группы может использовать это!
-game_ruinning: Вы не можете изменить настройки во время игры!
-theme_changed: Тема была изменена на {theme}!
-sudos: Изменить sudoers
-sudo_menu: "Добро пожаловать в меню sudoers!\n\nВыберите опцию ниже, чтобы настроить
-  бота."
-sudoers: "Пользователи с правами sudo:\n\n"
-add_sudo: Добавить пользователя
-rm_sudo: Удалить пользователя
-send_user_id: Отправьте ID пользователя или имя пользователя, которого вы хотите добавить
-  в sudoers
+said_uno: "{name} крикнул UNO!"
+say_uno: "{name} скажи UNO или возьми 2 карты!"
+not_said_uno: "{name} не сказал UNO!\n{name} берет 2 карты!"
+won: "🎉 {name} выиграл игру!"
+won_first: "🎉 {name} занял 1-е место!"
+continuing: Продолжаем игру с {count} игроками
+play: Сходить
+admin_only: Только администраторы группы могут использовать это!
+game_ruinning: Нельзя менять настройки во время игры!
+theme_changed: Тема изменена на {theme}!
+sudos: Управление Sudo
+sudo_menu: "Добро пожаловать в Sudo меню!\n\nВыберите действие:"
+sudoers: "Пользователи с Sudo правами:\n\n"
+add_sudo: Добавить Sudo
+rm_sudo: Удалить Sudo
+send_user_id: Отправьте ID или Username пользователя
 user_not_found: Пользователь не найден!
-user_sudoer: "{user} уже является sudoer!"
-user_added: "{user} был добавлен в sudoers!"
-select_user: "Выберите пользователя для удаления из sudoers\n\n"
-user_not_sudoer: "{user} не является sudoer!"
-user_removed: "{user} был удален из sudoers!"
-add_theme: Добавить новую тему
-send_theme_name: Отправьте название новой темы
-send_sticker: "Отправьте стикер, чтобы заменить стикер:"
-theme_added: Тема {name} была добавлена!
-add_card: Добавить новую карту
-update_card: Обновить карту
-verify_card: Проверить карты
-sudo_theme: Что вы хотите сделать с темой {theme}?
-send_card_code: Отправьте код карты, которую вы хотите добавить
-send_colored_card: Отправьте цветной стикер на карту {code}
-send_gray_card: Отправьте серый стикер на карту {code}
-card_added: Карта {code} была добавлена!
-light: Светлый
-dark: Темный
+user_sudoer: "{user} уже Sudoer!"
+user_added: "{user} добавлен в Sudoers!"
+select_user: "Выберите пользователя для удаления:\n\n"
+user_not_sudoer: "{user} не Sudoer!"
+user_removed: "{user} удален!"
+add_theme: Добавить Тему
+send_theme_name: Отправьте название темы
+send_sticker: "Отправьте стикер для замены:"
+theme_added: Тема {name} добавлена!
+add_card: Добавить Карту
+update_card: Обновить Карту
+verify_card: Проверить Карты
+sudo_theme: Что сделать с темой {theme}?
+send_card_code: Отправьте код карты
+send_colored_card: Отправьте цветной стикер для карты {code}
+send_gray_card: Отправьте серый стикер для карты {code}
+card_added: Карта {code} добавлена!
+card_removed: Карта {code} удалена!
+light: Светлая
+dark: Тёмная
 choose_card: Выберите карту для обновления
-settings_text: Настройки
-won_first: '{name} выиграл игру, заняв первое место!'
-left_game_private: Вы покинули игру в {group}!
-remove_reply_required: Ответьте на сообщение игрока, чтобы удалить его из игры!
-player_removed: "{admin} удалил {name} из игры!"
+skip_all: "{name} пропустил всех игроков!"
+discarted_all: "{name} сбросил {count} карт!"
+dev_mode: \nРежим разработчика
+left_game_private: Вы вышли из игры в {group}!
+remove_reply_required: Ответьте на сообщение игрока, чтобы исключить его!
+player_removed: "{admin} исключил {name} из игры!"
 player_not_in_game: Этот игрок не в игре!
+timeout_setting: Тайм-аут Хода
+info_timeout: Устанавливает время на один ход.
+timeout_skipped: "⏰ Время вышло! {name} пропустил ход и взял {count} карту(ы)."
+timeout_changed: "Тайм-аут хода установлен на {timeout} секунд!"
+choose_card_color: "Выберите цвет обновляемой карты:"
+choose_card_value: "Выберите значение обновляемой карты:"
+send_sticker_to_replace: "Отправьте стикер для замены этой карты:"
+card_updated_success: "Карта успешно обновлена!"
+checking_colored_cards: "Проверка цветных карт..."
+checking_gray_cards: "Проверка серых карт..."
+cards_verified_success: "Все карты успешно проверены!"
+card_not_found_send_sticker: "Карта {card} не найдена, отправьте стикер для замены:"
+card_updated: "Карта {card} успешно обновлена!"

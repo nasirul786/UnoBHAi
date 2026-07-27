@@ -1,121 +1,130 @@
-user_sudoer: '{user} ist bereits ein sudoer!'
-add_sudo: Benutzer hinzufügen
-select_user: "Wählen Sie einen Benutzer aus, der aus den sudoers entfernt werden soll\n\
-  \n"
-continuing: Fortsetzung des Spiels mit {count}
-sudo_theme: Was wollen Sie mit dem Thema {theme} machen?
-send_card_code: Senden Sie den Code der Karte, die Sie hinzufügen möchten
-user_added: '{user} wurde zu den sudoers hinzugefügt!'
-verify_card: Karten überprüfen
-light: Licht
-send_theme_name: Senden Sie den Namen des neuen Themas
-send_gray_card: Senden Sie den grauen Aufkleber an die Karte {code}
-start_game: Spiel starten
-info_theme: Sie wählen ein Thema für die Karten
-pass: Pass
-game_mode: Spiel-Modus
-info_lang: Sie können die Sprache des Bots ändern.
-already_joined: Sie sind bereits im Spiel!
-colorblind: Farbenblind
-settings_text: Einstellungen
-info_auto_pin: Wenn ein Spiel beginnt, pinnt der Bot automatisch die Spielnachricht.
-info_one_card: Wenn ein Spieler nur eine Karte hat, muss er UNO sagen. Wenn er das
-  nicht tut, muss er 2 Karten ziehen.
-game_mode_text: "Zeigt Informationen über die verfügbaren Spielmodi an!\n\n"
-bluff: Ich glaube, Sie bluffen!
-lobby_closed: Die Lobby ist geschlossen!
-seven_zero: 7-0
-only_group: Dieser Befehl funktioniert nur in Gruppen!
-not_swapped: Aufgrund der Anzahl der Spieler war es nicht möglich, Karten zu tauschen!
-bluffed: "{name} Du kannst nicht bluffen!\n{name} zog {draw} Karten!"
-join: Beitreten
-next: Weiter {name}
-sbluff: Bluff
-cards_swapped: '{name1} tauschte Karten mit {name2}'
-lobby_opened: Die Lobby ist geöffnet!
-already_in_game: Sie sind bereits in einem anderen Spiel
-start_text: "Hallo! Ich bin der UNO-Bot, ein Bot zum Spielen von UNO auf Telegram!\n
-  \nUm zu spielen, setzen Sie mich in einer Gruppe und senden Sie /new, um ein neues
-  Spiel zu starten!\n\noder zum Konfigurieren benutze die Buttons unten!"
-bought: Sie haben {number} Karten gekauft!
-won: '{name} das Spiel gewonnen!'
-lang_flag: 🇩🇪
-info_bluff: Wenn ein Spieler eine +4-Karte ausspielt, kann der nächste Spieler antreten.
-  Wenn der Spieler, der die +4-Karte gespielt hat, eine weitere Karte ausspielen kann,
-  zieht er 4 Karten. Wenn nicht, zieht derjenige, der die Karte herausgefordert hat,
-  6 Karten.
-theme: Thema
 lang_name: Deutsch
-one_card: Sag UNO
-colorchoosed: Ich habe die Farbe {color} gewählt!
-colorchoose: '{name} Wählen Sie eine Farbe!'
-say_uno: '{name} sage UNO oder ziehe 2 Karten!'
-help: Hilfe
-back: Zurück
-no_game: Es ist kein Spiel im Gange!
-send_user_id: Senden Sie die Benutzer-ID oder den Benutzernamen, den Sie zu den sudoers
-  hinzufügen möchten
-send_colored_card: Senden Sie den farbigen Aufkleber an {code} card
-player_left: '{name} das Spiel verlassen!'
+lang_flag: 🇩🇪
 lang_changed: Die Sprache wurde auf Deutsch umgestellt!
-theme_config: 'Wählen Sie ein Thema für die Karten:'
-not_said_uno: "{name} Du hast nicht UNO geschrien!\n{name} hat 2 Karten gezogen!"
-admin_only: Nur der Gruppenadministrator kann dies verwenden!
-leave: Verlassen Sie
-playerchoose: '{name} wähle einen Spieler!'
-user_removed: '{user} wurde aus den sudoers entfernt!'
-joined_game: Du bist dem Spiel beigetreten!
-invalid_card: Ungültige Bewegung!
-info_one_win: Wenn der erste Spieler keine Karten mehr hat, endet das Spiel und er
-  ist der Gewinner.
-status: Status
-sudoers: "Benutzer mit sudo-Berechtigungen:\n\n"
-add_theme: Neues Thema hinzufügen
-info_seven: Wenn eine 7 gespielt wird, kann der Spieler die Karten mit einem anderen
-  Spieler tauschen. Wenn eine 0 gespielt wird, gibt jeder seine Karten an den nächsten
-  Spieler weiter.
-game_already_started: Das Spiel hat bereits begonnen!
-not_allowed: Das darfst du nicht tun!
-sudos: sudoers ändern
-dark: Dunkelheit
-left_game: Du hast das Spiel verlassen!
-game_over: Das Spiel ist vorbei!
-swapped: Die Karten sind vertauscht worden!
-no_game_text: Kein Spiel im Gange, sende /new um ein neues Spiel zu beginnen!
-card_added: Die Karte {code} wurde hinzugefügt!
-send_sticker: 'Senden Sie einen Aufkleber, um den Aufkleber zu ersetzen:'
-theme_added: Das Thema {name} wurde hinzugefügt!
-choose_card: Wählen Sie eine zu aktualisierende Karte
-language: Sprache
-user_not_found: Benutzer nicht gefunden!
-player_joined: '{name} dem Spiel beigetreten!'
-user_not_sudoer: '{user} ist kein sudoer!'
-game_ruinning: Sie können die Einstellungen nicht ändern, während ein Spiel läuft!
-game_existis: Es ist bereits ein Spiel im Gange!
+back: Zurück
+theme: Thema
+settings_text: Einstellungen
+info_theme: Wählen Sie ein Thema für die Karten
+seven_zero: 7-0 Regel
+info_seven: "Bei einer 7 kann der Spieler Karten mit einem anderen tauschen. Bei einer 0 geben alle ihre Karten an den nächsten Spieler weiter."
+sbluff: Bluff Regel
+info_bluff: "Bei +4 kann der nächste herausfordern. War +4 unberechtigt, zieht der Spieler 4 Karten, sonst der Herausforderer 6 Karten!"
 one_win: Ein Gewinner
-choose_lang: Wählen Sie eine Sprache
-info_text: "🃏 Spielinformationen:\nAktueller Spieler - {current_player}\nLetzte Karte
-  - {last_card}\n"
-settings: "Willkommen im Einstellungsmenü!\n\nWählen Sie unten eine Option, um den
-  Bot zu konfigurieren."
-play: Spielen
-rm_sudo: Benutzer entfernen
-no_joinned: Sie sind nicht im Spiel!
-update_card: Karte aktualisieren
-classic: Klassisch
-said_uno: '{name} rief UNO!'
-theme_changed: Das Thema wurde auf {theme} geändert!
-add_card: Neue Karte hinzufügen
-game_started: Ein neues Spiel hat begonnen!
-not_bluffed: "{name1} Du hast nicht geblufft!\n{name2} {draw} Karten gezogen!"
-info_text2: '{player}: {cards} Karten, '
-buy: '{number} Karte(n) kaufen'
-minimalist: Minimalistisch
-sudo_menu: "Willkommen im sudoers-Menü!\n\nWählen Sie unten eine Option, um den Bot
-  zu konfigurieren."
+info_one_win: "Wenn der erste Spieler keine Karten mehr hat, endet das Spiel und er gewinnt."
+one_card: UNO Regel
+info_one_card: "Hat ein Spieler nur 1 Karte, muss er UNO rufen. Vergisst er es, muss er 2 Karten ziehen."
 auto_pin: Auto-Pin
-won_first: '{name} das Spiel auf dem ersten Platz gewonnen!'
+info_auto_pin: "Der Bot pinnt die Spielnachricht automatisch beim Start."
+stack: Stapeln
+info_stack: "Bei +2/+4 kann der nächste Spieler auch +2/+4 legen. Die Karten summieren sich."
+draw_one: 1 Karte ziehen
+info_draw_one: "Wenn kein Zug möglich ist, muss 1 Karte gezogen werden."
+language: Sprache
+info_lang: Sprache des Bots ändern.
+choose_lang: "Wählen Sie eine Sprache:"
+start_text: "Hallo! Ich bin der UNO-Bot auf Telegram!\n\nFüge mich zu einer Gruppe hinzu und sende /new, um ein neues Spiel zu starten!"
+help: Hilfe
+game_mode: Spielmodus
+status: Status
+game_mode_text: "Verfügbare Spielmodi:\n\n"
+settings: "Willkommen im Einstellungsmenü!\n\nWählen Sie unten eine Option:"
+theme_config: "Wählen Sie ein Thema für die Karten:"
+minimalist: Minimalistisch
+classic: Klassisch
+colorblind: Farbenblind
+nomercy: No Mercy
+game_existis: Es läuft bereits ein Spiel!
+only_group: Dieser Befehl funktioniert nur in Gruppen!
+already_in_game: Sie sind bereits in einem Spiel!
+already_joined: Sie sind bereits beigetreten!
+join: Beitreten
+leave: Verlassen
+start_game: Spiel starten
+game_started: Ein neues Spiel hat begonnen!
+no_game: Es läuft kein Spiel!
+no_game_text: Kein Spiel aktiv. Sende /new, um zu starten!
+lobby_closed: Die Lobby wurde geschlossen!
+lobby_opened: Die Lobby ist geöffnet!
+joined_game: Du bist dem Spiel beigetreten!
+player_joined: "{name} ist dem Spiel beigetreten!"
+no_joinned: Sie sind nicht im Spiel!
+next: "Nächster Spieler: {name}"
+game_over: Das Spiel ist vorbei!
+player_left: "{name} hat das Spiel verlassen!"
+left_game: Du hast das Spiel verlassen!
+not_allowed: Das ist nicht erlaubt!
+game_already_started: Das Spiel hat bereits begonnen!
+info_text: "🃏 Spielinformationen:\nAktueller Spieler: {current_player}\nLetzte Karte: {last_card}\n"
+info_text2: "{player}: {cards} Karten, "
+pass: Passen
+buy: "{number} Karte(n) ziehen"
+bluff: Ich glaube du bluffst!
+cards_swapped: "{name1} hat Karten mit {name2} getauscht!"
+not_swapped: Tauschen war aufgrund der Spielerzahl nicht möglich!
+swapped: Karten wurden getauscht!
+bought: Sie haben {number} Karte(n) gezogen!
+pbought: "{name} hat {number} Karte(n) gezogen!"
+bluffed: "{name} du hast nicht geblufft!\n{name} zieht {draw} Karten!"
+not_bluffed: "{name1} hat nicht geblufft!\n{name2} zieht {draw} Karten!"
+colorchoose: "{name} wähle eine Farbe!"
+colorchoosed: Ich habe {color} gewählt!
+playerchoose: "{name} wähle einen Spieler!"
+invalid_card: Ungültiger Zug!
+said_uno: "{name} hat UNO gerufen!"
+say_uno: "{name} rufe UNO oder ziehe 2 Karten!"
+not_said_uno: "{name} hat nicht UNO gerufen!\n{name} zieht 2 Karten!"
+won: "🎉 {name} hat das Spiel gewonnen!"
+won_first: "🎉 {name} gewinnt den 1. Platz!"
+continuing: Spiel wird mit {count} Spielern fortgesetzt
+play: Spielen
+admin_only: Nur Gruppenadministratoren können dies tun!
+game_ruinning: Einstellungen können während eines Spiels nicht geändert werden!
+theme_changed: Das Thema wurde auf {theme} geändert!
+sudos: Sudoers ändern
+sudo_menu: "Willkommen im Sudo-Menü!\n\nWählen Sie eine Option:"
+sudoers: "Benutzer mit Sudo-Rechten:\n\n"
+add_sudo: Benutzer hinzufügen
+rm_sudo: Benutzer entfernen
+send_user_id: Senden Sie die Benutzer-ID oder den Benutzernamen
+user_not_found: Benutzer nicht gefunden!
+user_sudoer: "{user} ist bereits Sudoer!"
+user_added: "{user} wurde hinzugefügt!"
+select_user: "Wählen Sie einen Benutzer zum Entfernen:\n\n"
+user_not_sudoer: "{user} ist kein Sudoer!"
+user_removed: "{user} wurde entfernt!"
+add_theme: Neues Thema hinzufügen
+send_theme_name: Senden Sie den Namen des neuen Themas
+send_sticker: "Senden Sie einen Sticker zum Ersetzen:"
+theme_added: Thema {name} wurde hinzugefügt!
+add_card: Neue Karte hinzufügen
+update_card: Karte aktualisieren
+verify_card: Karten überprüfen
+sudo_theme: Was möchten Sie mit Thema {theme} tun?
+send_card_code: Code der neuen Karte senden
+send_colored_card: Farbigen Sticker für {code} senden
+send_gray_card: Grauen Sticker für {code} senden
+card_added: Karte {code} wurde hinzugefügt!
+card_removed: Karte {code} wurde entfernt!
+light: Hell
+dark: Dunkel
+choose_card: Wählen Sie eine Karte aus
+skip_all: "{name} hat alle übersprungen!"
+discarted_all: "{name} hat {count} Karten abgelegt!"
+dev_mode: \nEntwicklermodus
 left_game_private: Du hast das Spiel in {group} verlassen!
-remove_reply_required: Antworten Sie auf die Nachricht eines Spielers, um ihn aus dem Spiel zu entfernen!
-player_removed: "{admin} hat {name} aus dem Spiel entfernt!"
+remove_reply_required: Antworte auf die Nachricht eines Spielers, um ihn zu entfernen!
+player_removed: "{admin} hat {name} entfernt!"
 player_not_in_game: Dieser Spieler ist nicht im Spiel!
+timeout_setting: Zug-Timeout
+info_timeout: Dauer des Zug-Timeouts festlegen.
+timeout_skipped: "⏰ Zeit abgelaufen! {name} wurde übersprungen und zog {count} Karte(n)!"
+timeout_changed: "Zug-Timeout auf {timeout} Sekunden gesetzt!"
+choose_card_color: "Farbe der zu aktualisierenden Karte wählen:"
+choose_card_value: "Wert der zu aktualisierenden Karte wählen:"
+send_sticker_to_replace: "Sticker zum Ersetzen senden:"
+card_updated_success: "Karte erfolgreich aktualisiert!"
+checking_colored_cards: "Farbige Karten werden überprüft..."
+checking_gray_cards: "Graue Karten werden überprüft..."
+cards_verified_success: "Alle Karten erfolgreich überprüft!"
+card_not_found_send_sticker: "Karte {card} nicht gefunden, bitte Sticker senden:"
+card_updated: "Karte {card} erfolgreich aktualisiert!"

@@ -1,7 +1,6 @@
 import os
 
 from tortoise import Tortoise, connections, fields
-from tortoise.backends.base.client import Capabilities
 from tortoise.models import Model
 
 
@@ -16,6 +15,7 @@ class Chat(Model):
     auto_pin = fields.BooleanField(default=False)
     satack = fields.BooleanField(default=True)
     draw_one = fields.BooleanField(default=True)
+    timeout = fields.IntField(default=45)
 
 
 class User(Model):
@@ -61,14 +61,11 @@ async def connect_database():
     })
 
     conn = connections.get("bot_db")
-    conn.capabilities = Capabilities(
-        "sqlite",
-        daemon=False,
-        requires_limit=True,
-        inline_comment=True,
-        support_for_update=False,
-        support_update_limit_order_by=False,
-    )
 
     # Generate the schema
     await Tortoise.generate_schemas()
+
+    try:
+        await conn.execute_script("ALTER TABLE chat ADD COLUMN timeout INT DEFAULT 45;")
+    except Exception:
+        pass

@@ -27,7 +27,7 @@ async def start(c: Client, m: Message | CallbackQuery, t):
     func = m.edit_message_text if isinstance(m, CallbackQuery) else m.reply_text
     keyb = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton(t("tudos"), callback_data="settings_sudos"),
+            InlineKeyboardButton(t("sudos"), callback_data="settings_sudos"),
             InlineKeyboardButton(t("theme"), callback_data="settings_sudo_themc"),
         ],
         [
@@ -66,7 +66,6 @@ async def settings_sudos(c: Client, cq: CallbackQuery, t):
 async def settings_sudos_add(c: Client, cq: CallbackQuery, t):
     await cq.edit_message_text(t("send_user_id"))
     cmessage = None
-    # Wait for the user to send a message with the new emoji
     try:
         while cmessage is None:
             cmessage = await cq.message.chat.listen(filters.text)
@@ -93,7 +92,7 @@ async def settings_sudos_add(c: Client, cq: CallbackQuery, t):
     await cmessage.reply_text(
         t("user_added").format(user=user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Voltar", callback_data="settings_sudos")]
+            [InlineKeyboardButton(t("back"), callback_data="settings_sudos")]
         ]),
     )
 
@@ -105,18 +104,18 @@ async def settings_sudos_remove(c: Client, cq: CallbackQuery, t):
         db_users = await User.filter(sudo=True)
         users = await c.get_users([usr.id for usr in db_users])
         text = t("select_user")
-        keyb = [
-            [
-                InlineKeyboardButton(
-                    user.first_name,
-                    callback_data=f"settings_sudos_remove_{user.id}",
-                )
-            ]
+        usr_btns = [
+            InlineKeyboardButton(
+                user.first_name,
+                callback_data=f"settings_sudos_remove_{user.id}",
+            )
             for user in users
         ]
+        # 2 buttons per row
+        rows = [usr_btns[i : i + 2] for i in range(0, len(usr_btns), 2)]
+        rows.append([InlineKeyboardButton(t("back"), callback_data="settings_sudos")])
 
-        keyb.append([InlineKeyboardButton(t("back"), callback_data="settings_sudos")])
-        await cq.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyb))
+        await cq.edit_message_text(text, reply_markup=InlineKeyboardMarkup(rows))
         return
 
     db_users = await User.filter(sudo=True)
@@ -133,7 +132,7 @@ async def settings_sudos_remove(c: Client, cq: CallbackQuery, t):
     await cq.edit_message_text(
         t("user_removed").format(user=user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Voltar", callback_data="settings_sudos")]
+            [InlineKeyboardButton(t("back"), callback_data="settings_sudos")]
         ]),
     )
 
@@ -141,17 +140,16 @@ async def settings_sudos_remove(c: Client, cq: CallbackQuery, t):
 @Client.on_callback_query(filters.regex("^settings_sudo_themc$") & filter_sudoers)
 @use_user_lang()
 async def settings_sudo_themc(c: Client, cq: CallbackQuery, t):
-    keyb = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton(text=theme, callback_data=f"settings_sudo_themc {theme}")
-            for theme in cards
-        ],
-        [
-            InlineKeyboardButton(t("add_theme"), callback_data="settings_sudo_themc_new"),
-            InlineKeyboardButton(t("theme"), callback_data="sudos"),
-        ],
-    ])
-    await cq.edit_message_text(t("theme_config"), reply_markup=keyb)
+    theme_btns = [
+        InlineKeyboardButton(text=t(theme), callback_data=f"settings_sudo_themc {theme}")
+        for theme in cards
+    ]
+    # 2 buttons per row
+    rows = [theme_btns[i : i + 2] for i in range(0, len(theme_btns), 2)]
+    rows.append([InlineKeyboardButton(t("add_theme"), callback_data="settings_sudo_themc_new")])
+    rows.append([InlineKeyboardButton(t("back"), callback_data="sudos")])
+
+    await cq.edit_message_text(t("theme_config"), reply_markup=InlineKeyboardMarkup(rows))
 
 
 @Client.on_callback_query(filters.regex("^settings_sudo_themc_new$") & filter_sudoers)
@@ -159,7 +157,6 @@ async def settings_sudo_themc(c: Client, cq: CallbackQuery, t):
 async def settings_themes_new(c: Client, cq: CallbackQuery, t):
     await cq.edit_message_text(t("send_theme_name"))
     cmessage = None
-    # Wait for the user to send a message with the new emoji
     try:
         while cmessage is None:
             cmessage = await cq.message.chat.listen(filters.text)
@@ -168,7 +165,6 @@ async def settings_themes_new(c: Client, cq: CallbackQuery, t):
         return
 
     name = cmessage.text
-
     ncards = cards["classic"]
 
     for card in ncards["STICKERS"]:
@@ -176,7 +172,6 @@ async def settings_themes_new(c: Client, cq: CallbackQuery, t):
         await c.send_sticker(cq.message.chat.id, ncards["STICKERS"][card])
 
         cmessage = None
-        # Wait for the user to send a message with the new emoji
         try:
             while cmessage is None:
                 cmessage = await cq.message.chat.listen(filters.sticker)
@@ -188,7 +183,6 @@ async def settings_themes_new(c: Client, cq: CallbackQuery, t):
         await c.send_sticker(cq.message.chat.id, ncards["STICKERS_GREY"][card])
 
         cmessage = None
-        # Wait for the user to send a message with the new emoji
         try:
             while cmessage is None:
                 cmessage = await cq.message.chat.listen(filters.sticker)
@@ -196,14 +190,14 @@ async def settings_themes_new(c: Client, cq: CallbackQuery, t):
         except ListenerTimeout:
             return
 
-    with Path(f"cards/{name}.json").open(mode="w", encoding="locale") as f:
+    with Path(f"cards/{name}.json").open(mode="w", encoding="utf-8") as f:
         dump(ncards, f)
 
     await c.send_message(
         cq.message.chat.id,
         t("theme_added").format(name=name),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Voltar", callback_data="settings_sudo_themc")]
+            [InlineKeyboardButton(t("back"), callback_data="settings_sudo_themc")]
         ]),
     )
 
@@ -218,11 +212,13 @@ async def settings_themes(c: Client, cq: CallbackQuery, t):
             InlineKeyboardButton(
                 t("update_card"), callback_data="settings_sudo_themc_update " + theme
             ),
+        ],
+        [
             InlineKeyboardButton(
                 t("verify_card"), callback_data="settings_sudo_themc_check " + theme
             ),
         ],
-        [InlineKeyboardButton("Voltar", callback_data="settings_sudo_themc")],
+        [InlineKeyboardButton(t("back"), callback_data="settings_sudo_themc")],
     ])
     await cq.edit_message_text(t("sudo_theme").format(theme=theme), reply_markup=keyb)
 
@@ -234,7 +230,6 @@ async def settings_themes_add(c: Client, cq: CallbackQuery, t):
     await cq.edit_message_text(t("send_card_code"))
 
     cmessage = None
-
     try:
         while cmessage is None:
             cmessage = await cq.message.chat.listen(filters.text)
@@ -246,7 +241,6 @@ async def settings_themes_add(c: Client, cq: CallbackQuery, t):
     await c.send_message(cq.message.chat.id, t("send_colored_card").format(code=code))
 
     cmessage = None
-
     try:
         while cmessage is None:
             cmessage = await cq.message.chat.listen(filters.sticker)
@@ -255,10 +249,9 @@ async def settings_themes_add(c: Client, cq: CallbackQuery, t):
 
     stickerc = cmessage.sticker.file_id
 
-    await c.send_message(cq.message.chat.id, t("send_grey_card").format(code=code))
+    await c.send_message(cq.message.chat.id, t("send_gray_card").format(code=code))
 
     cmessage = None
-
     try:
         while cmessage is None:
             cmessage = await cq.message.chat.listen(filters.sticker)
@@ -270,7 +263,7 @@ async def settings_themes_add(c: Client, cq: CallbackQuery, t):
     cards[theme]["STICKERS"][code] = stickerc
     cards[theme]["STICKERS_GREY"][code] = stickerg
 
-    with Path(f"cards/{theme}.json").open(mode="w", encoding="locale") as f:
+    with Path(f"cards/{theme}.json").open(mode="w", encoding="utf-8") as f:
         dump(cards[theme], f)
 
     await c.send_message(
@@ -300,26 +293,30 @@ async def settings_themes_update(c: Client, cq: CallbackQuery, t):
                     callback_data=f"settings_sudo_themc_update {theme} Dark",
                 ),
             ],
+            [InlineKeyboardButton(t("back"), callback_data=f"settings_sudo_themc {theme}")],
         ])
         await cq.edit_message_text(t("theme_config"), reply_markup=keyb)
-    if len(sp) == 2:
-        keyb = []
-        for color in cards[theme]["CARDS"]["COLORS"]:
-            keyb.append(
-                InlineKeyboardButton(
-                    color,
-                    callback_data=f"settings_sudo_themc_update {theme} {sp[1]} {color}",
-                )
+    elif len(sp) == 2:
+        color_btns = [
+            InlineKeyboardButton(
+                color,
+                callback_data=f"settings_sudo_themc_update {theme} {sp[1]} {color}",
             )
-        keyb.append(
+            for color in cards[theme]["CARDS"]["COLORS"]
+        ]
+        rows = [color_btns[i : i + 2] for i in range(0, len(color_btns), 2)]
+        rows.append([
             InlineKeyboardButton(
                 "SPECIALS",
                 callback_data=f"settings_sudo_themc_update {theme} {sp[1]} SPECIALS",
             )
-        )
+        ])
+        rows.append([
+            InlineKeyboardButton(t("back"), callback_data=f"settings_sudo_themc_update {theme}")
+        ])
         await cq.edit_message_text(
-            "Escolha a cor da carta que deseja atualizar",
-            reply_markup=InlineKeyboardMarkup([keyb]),
+            t("choose_card_color"),
+            reply_markup=InlineKeyboardMarkup(rows),
         )
     elif len(sp) == 3:
         keyb = []
@@ -339,18 +336,20 @@ async def settings_themes_update(c: Client, cq: CallbackQuery, t):
                         callback_data=f"settings_sudo_themc_update {theme} {sp[1]} {sp[2]} {card}",
                     )
                 ])
+        keyb.append([
+            InlineKeyboardButton(t("back"), callback_data=f"settings_sudo_themc_update {theme} {sp[1]}")
+        ])
         await cq.edit_message_text(
-            "Escolha o valor da carta que deseja atualizar",
+            t("choose_card_value"),
             reply_markup=InlineKeyboardMarkup(keyb),
         )
     elif len(sp) == 4:
-        await cq.edit_message_text("Envie um sticker para substituir a carta:")
+        await cq.edit_message_text(t("send_sticker_to_replace"))
         cardid = sp[2] + "_" + sp[3] if sp[2] != "x" else sp[3]
         cardtm = "STICKERS_GREY" if sp[1] == "Dark" else "STICKERS"
         await c.send_sticker(cq.message.chat.id, cards[theme][cardtm][cardid])
 
         cmessage = None
-
         try:
             while cmessage is None:
                 cmessage = await cq.message.chat.listen(filters.sticker)
@@ -359,23 +358,24 @@ async def settings_themes_update(c: Client, cq: CallbackQuery, t):
 
         cards[theme][cardtm][cardid] = cmessage.sticker.file_id
 
-        with Path(f"cards/{theme}.json").open(mode="w", encoding="locale") as f:
+        with Path(f"cards/{theme}.json").open(mode="w", encoding="utf-8") as f:
             dump(cards[theme], f)
 
         await c.send_message(
             cq.message.chat.id,
-            "Carta atualizada com sucesso!",
+            t("card_updated_success"),
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("Voltar", callback_data="settings_sudo_themc")]
+                [InlineKeyboardButton(t("back"), callback_data="settings_sudo_themc")]
             ]),
         )
 
 
 @Client.on_callback_query(filters.regex("^settings_sudo_themc_check ") & filter_sudoers)
-async def settings_themes_check(c: Client, cq: CallbackQuery):
+@use_user_lang()
+async def settings_themes_check(c: Client, cq: CallbackQuery, t):
     theme = cq.data.split(" ")[1]
     card_types = ["STICKERS", "STICKERS_GREY"]
-    messages = ["Verificando cartas coloridas...", "Verificando cartas cinzas..."]
+    messages = [t("checking_colored_cards"), t("checking_gray_cards")]
 
     for card_type, message in zip(card_types, messages):
         await c.send_message(cq.message.chat.id, message)
@@ -387,7 +387,7 @@ async def settings_themes_check(c: Client, cq: CallbackQuery):
             except MediaEmpty:
                 await c.send_message(
                     cq.message.chat.id,
-                    f"Carta {card} não encontrada, mande a carta para substitui-lá",
+                    t("card_not_found_send_sticker").format(card=card),
                 )
 
                 while True:
@@ -398,12 +398,12 @@ async def settings_themes_check(c: Client, cq: CallbackQuery):
                         return
 
                 cards[theme][card_type][card] = cmessage.sticker.file_id
-                await c.send_message(cq.message.chat.id, f"Carta {card} atualizada com sucesso!")
+                await c.send_message(cq.message.chat.id, t("card_updated").format(card=card))
 
-    with Path(f"cards/{theme}.json").open(mode="w", encoding="locale") as f:
+    with Path(f"cards/{theme}.json").open(mode="w", encoding="utf-8") as f:
         dump(cards[theme], f)
 
-    await c.send_message(cq.message.chat.id, "Cartas verificadas com sucesso!")
+    await c.send_message(cq.message.chat.id, t("cards_verified_success"))
 
 
 @Client.on_inline_query(filters.regex("^change ") & filter_sudoers)
